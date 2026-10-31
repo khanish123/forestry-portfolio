@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { education } from "@/content/education";
 import { displayName, heroFacts, profile } from "@/content/profile";
-import type { HeroLayout } from "@/content/theme";
+import { themeSwitcherEnabled, type HeroLayout } from "@/content/theme";
 import { Artwork } from "./Artwork";
 import { ButtonLink } from "./Button";
 import { CvButton } from "./CvButton";
@@ -192,6 +192,21 @@ function BannerHero() {
 }
 
 export function Hero({ layout }: { layout: HeroLayout }) {
+  // In preview mode every layout is rendered; CSS shows the one matching the active theme.
+  if (themeSwitcherEnabled) {
+    return (
+      <div data-hero-set>
+        <div data-hero="split"><SplitHero /></div>
+        <div data-hero="minimal"><MinimalHero /></div>
+        <div data-hero="editorial"><EditorialHero /></div>
+        <div data-hero="banner"><BannerHero /></div>
+      </div>
+    );
+  }
+  return <HeroLayoutView layout={layout} />;
+}
+
+function HeroLayoutView({ layout }: { layout: HeroLayout }) {
   switch (layout) {
     case "minimal":
       return <MinimalHero />;

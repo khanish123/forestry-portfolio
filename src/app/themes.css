@@ -179,3 +179,11 @@
 .artwork [stroke="#8a6d45"] { stroke: var(--color-bark-500); }
 .artwork [fill="#6b4f2a"] { fill: var(--color-bark-700); }
 .artwork [stroke="#6b4f2a"] { stroke: var(--color-bark-700); }
+
+/* Theme preview mode: show only the hero layout that belongs to the active theme */
+[data-hero-set] > [data-hero] { display: none; }
+[data-theme="forest"] [data-hero-set] > [data-hero="split"],
+[data-theme="boreal"] [data-hero-set] > [data-hero="split"],
+[data-theme="birch"] [data-hero-set] > [data-hero="minimal"],
+[data-theme="journal"] [data-hero-set] > [data-hero="editorial"],
+[data-theme="canopy"] [data-hero-set] > [data-hero="banner"] { display: block; }

@@ -36,3 +36,19 @@ export const themeColors: Record<ThemeName, string> = {
   journal: "#2f3a1c",
   canopy: "#073735",
 };
+
+/** Human-readable names for the theme switcher. */
+export const themeOptions: { id: ThemeName; label: string }[] = [
+  { id: "forest", label: "Sage Forest" },
+  { id: "boreal", label: "Boreal Night" },
+  { id: "birch", label: "Nordic Birch" },
+  { id: "journal", label: "Field Journal" },
+  { id: "canopy", label: "Tropical Canopy" },
+];
+
+/**
+ * A floating theme switcher appears during local development (npm run dev).
+ * Set NEXT_PUBLIC_THEME_SWITCHER=true to show it on a deployed site as well.
+ */
+export const themeSwitcherEnabled =
+  process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_THEME_SWITCHER === "true";

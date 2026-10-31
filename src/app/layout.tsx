@@ -6,7 +6,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { displayName, profile, site } from "@/content/profile";
-import { theme, themeColors } from "@/content/theme";
+import { theme, themeColors, themeSwitcherEnabled } from "@/content/theme";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 const fullTitle = `${displayName} — ${profile.role}`;
 
@@ -40,6 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Enables reveal-on-scroll only when JavaScript is available */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {themeSwitcherEnabled && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: "try{var t=localStorage.getItem('preview-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}",
+            }}
+          />
+        )}
       </head>
       <body className="flex min-h-screen flex-col">
         <a
@@ -53,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer name={displayName} />
+        {themeSwitcherEnabled && <ThemeSwitcher />}
       </body>
     </html>
   );
