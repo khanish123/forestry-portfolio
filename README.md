@@ -75,14 +75,16 @@ To preview a theme on Vercel without changing code, set the environment variable
 ## Contact form and CV requests
 
 Both the **contact form** and the **CV request form** (Contact page → Academic CV) email submissions
-directly to `profile.links.email`, via [FormSubmit](https://formsubmit.co). No account or server is needed.
-The visitor's address is set as reply-to, so you can answer with your email client's **Reply**.
+directly to you. The visitor's address is set as reply-to, so you can simply press **Reply**.
 
-**One-time activation:** the first submission sends an *"Activate Form"* email to your address.
-Click the link in it once; every submission after that is delivered. (Check your spam folder if it doesn't arrive.)
+**Recommended: Web3Forms**
+1. Go to https://web3forms.com, enter your email address and click **Create Access Key**.
+2. The key arrives by email instantly (no activation link).
+3. Paste it into `formDelivery.web3formsKey` in `src/content/profile.ts`
+   (or set `NEXT_PUBLIC_WEB3FORMS_KEY` in Vercel and redeploy). The key is designed to be public.
 
-Optional: after activation FormSubmit offers a random alias that hides your address. To use it (or Formspree instead),
-set `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`, e.g. `https://formsubmit.co/ajax/<your-alias>`, in Vercel and redeploy.
+**Fallback: FormSubmit.** If no key is set, the forms use FormSubmit with your profile email. This needs a
+one-time activation link clicked from your inbox.
 
 ## Deployment
 

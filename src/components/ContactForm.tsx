@@ -70,7 +70,7 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
           };
 
     setStatus("sending");
-    const ok = await sendForm(endpoint, { subject, replyTo: from, fields });
+    const ok = await sendForm(endpoint, { subject, replyTo: from, fromName: name, fields });
     setStatus(ok ? "sent" : "error");
     if (ok) form.reset();
   }

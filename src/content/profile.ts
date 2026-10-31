@@ -80,3 +80,14 @@ export const heroFacts: { label: string; value: string }[] = [
   { label: "Current research", value: "Transferability of tree height–diameter models" },
   { label: "Experience", value: "≈ 4 years of field and research work in Pakistan and Finland" },
 ];
+
+/**
+ * ✏️  Contact form delivery.
+ * Paste your free Web3Forms access key here (get it at https://web3forms.com
+ * by entering ishfaqahmad860@gmail.com). Messages and CV requests are then
+ * emailed straight to that address. The key is meant to be public.
+ * While null, the forms fall back to FormSubmit (see src/lib/sendForm.ts).
+ */
+export const formDelivery: { web3formsKey: string | null } = {
+  web3formsKey: null,
+};
