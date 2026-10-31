@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { navigation } from "@/content/navigation";
 import { cn, withBase } from "@/lib/utils";
+import { brandTagline, LogoMark } from "./Logo";
 
 export function Header({ name, cvPath }: { name: string; cvPath: string | null }) {
   const pathname = usePathname();
@@ -42,14 +43,12 @@ export function Header({ name, cvPath }: { name: string; cvPath: string | null }
       )}
     >
       <div className="container-page flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="group flex items-center gap-2.5" aria-label={`${name} — home`}>
-          <span aria-hidden className="grid h-8 w-8 place-items-center rounded-full bg-forest-800 text-paper">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 3 6.5 11h3L6 16h12l-3.5-5h3z" />
-              <path d="M12 16v5" />
-            </svg>
+        <Link href="/" className="group flex items-center gap-3" aria-label={`${name} — home`}>
+          <LogoMark className="h-10" />
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-[1.05rem] font-semibold tracking-tight text-charcoal group-hover:text-forest-800">{name}</span>
+            <span className="mt-1 hidden text-[0.62rem] font-medium tracking-[0.16em] text-ink-muted uppercase sm:block">{brandTagline}</span>
           </span>
-          <span className="font-serif text-[1.05rem] font-semibold tracking-tight text-charcoal group-hover:text-forest-800">{name}</span>
         </Link>
 
         <nav aria-label="Main" className="hidden lg:block">

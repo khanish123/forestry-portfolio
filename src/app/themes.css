@@ -187,3 +187,7 @@
 [data-theme="birch"] [data-hero-set] > [data-hero="minimal"],
 [data-theme="journal"] [data-hero-set] > [data-hero="editorial"],
 [data-theme="canopy"] [data-hero-set] > [data-hero="banner"] { display: block; }
+
+/* Logo: use the light-line version on the dark theme */
+[data-theme="boreal"] .logo-on-light { display: none; }
+[data-theme="boreal"] .logo-on-dark { display: inline-block; }
