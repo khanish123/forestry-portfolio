@@ -1,6 +1,7 @@
 import { GraduationCap, Mail } from "lucide-react";
 import type { ReactNode } from "react";
 import { profile } from "@/content/profile";
+import { showPlaceholders } from "@/lib/placeholders";
 import { cn } from "@/lib/utils";
 import { GitHubIcon, LinkedInIcon } from "./BrandIcons";
 
@@ -27,7 +28,7 @@ export function SocialLinks({ className, tone = "dark", showLabels = false }: { 
       : "text-sage-200 hover:text-paper hover:bg-forest-800 border-forest-700";
   return (
     <ul className={cn("flex flex-wrap items-center gap-2", className)}>
-      {socialItems().map((item) => (
+      {socialItems().filter((item) => item.href || showPlaceholders).map((item) => (
         <li key={item.key}>
           {item.href ? (
             <a

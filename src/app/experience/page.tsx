@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Briefcase, FlaskConical, Handshake, MapPin, Sprout } from "lucide-react";
+import { Briefcase, ClipboardList, FlaskConical, GraduationCap, Handshake, MapPin, Trees } from "lucide-react";
 import { CallToAction } from "@/components/CallToAction";
 import { PageHeader } from "@/components/PageHeader";
 import { Pending } from "@/components/Pending";
@@ -18,7 +18,9 @@ export const metadata: Metadata = {
 const icons: Record<Experience["category"], typeof Briefcase> = {
   Research: FlaskConical,
   "Field research": MapPin,
-  Forestry: Sprout,
+  "Forest inventory": Trees,
+  Consultancy: ClipboardList,
+  Internship: GraduationCap,
   "Development sector": Handshake,
 };
 
@@ -43,6 +45,11 @@ export default function ExperiencePage() {
       ),
       body: (
         <div className="space-y-3">
+          {e.project && (
+            <p>
+              <span className="font-medium text-charcoal">Project:</span> {e.project}
+            </p>
+          )}
           {e.summary ? <p>{e.summary}</p> : null}
           {e.responsibilities.length > 0 ? (
             <ul className="space-y-1.5">
@@ -63,10 +70,10 @@ export default function ExperiencePage() {
 
   return (
     <>
-      <PageHeader eyebrow="Professional experience" title="Research, field and development work" artwork="contours" seed={71}>
+      <PageHeader eyebrow="Professional experience" title="Research, inventory and fieldwork" artwork="contours" seed={71}>
         <p>
-          Research experience at the University of Eastern Finland, alongside earlier forestry, field research and
-          development-sector experience in Pakistan.
+          About four years of research, forest inventory and field experience — from carbon stock assessment and
+          sustainable forest management projects in Pakistan to forest research at the University of Eastern Finland.
         </p>
       </PageHeader>
 

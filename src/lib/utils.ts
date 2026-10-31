@@ -22,5 +22,6 @@ export function seededRandom(seed: number) {
 
 export function formatPeriod(start: string | null, end: string | null) {
   if (!start && !end) return null;
+  if (!start) return end;
   return `${start ?? "?"} – ${end ?? "Present"}`;
 }

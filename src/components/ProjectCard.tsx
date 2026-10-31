@@ -1,5 +1,6 @@
 import { ArrowUpRight, FlaskConical, HelpCircle, MapPin, Wrench } from "lucide-react";
 import type { Project } from "@/content/types";
+import { showPlaceholders } from "@/lib/placeholders";
 import { DraftNote, Pending } from "./Pending";
 import { Tag } from "./Tag";
 import { Visual } from "./Visual";
@@ -78,6 +79,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
                 ))}
               </div>
             </div>
+            {(project.outputs.length > 0 || project.keyFindings || showPlaceholders) && (
             <div>
               <h3 className="font-sans text-sm font-semibold tracking-wide text-charcoal uppercase">Outputs & findings</h3>
               <div className="mt-3 space-y-2 text-[0.95rem]">
@@ -107,6 +109,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
                 )}
               </div>
             </div>
+            )}
           </div>
 
           {project.draft && (

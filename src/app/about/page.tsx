@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { ArrowRight, BookOpen, GraduationCap, MapPin } from "lucide-react";
+import { ArrowRight, Award, BookOpen, GraduationCap, MapPin } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { CallToAction } from "@/components/CallToAction";
 import { PageHeader, SectionHeading } from "@/components/PageHeader";
 import { DraftNote, Pending } from "@/components/Pending";
 import { Reveal } from "@/components/Reveal";
 import { Timeline } from "@/components/Timeline";
-import { academicJourney, academicJourneyIsDraft, education, professionalDevelopment } from "@/content/education";
+import { academicJourney, academicJourneyIsDraft, awards, education, languages, professionalDevelopment } from "@/content/education";
 import { interestKeywords, profile } from "@/content/profile";
 import { formatPeriod } from "@/lib/utils";
 
@@ -29,24 +29,45 @@ export default function AboutPage() {
       </span>
     ),
     body: (
-      <dl className="grid gap-1.5 sm:grid-cols-[7rem_1fr]">
-        <dt className="font-medium text-charcoal">Thesis</dt>
-        <dd>{e.thesis ?? <Pending label="Thesis title" />}</dd>
-        <dt className="font-medium text-charcoal">Supervisor</dt>
-        <dd>{e.supervisor ?? <Pending label="Supervisor(s)" />}</dd>
-        {e.notes && (
-          <>
-            <dt className="font-medium text-charcoal">Notes</dt>
-            <dd>{e.notes}</dd>
-          </>
+      <div className="space-y-3">
+        {e.department && <p>{e.department}</p>}
+        <dl className="grid gap-1.5 sm:grid-cols-[8rem_1fr]">
+          {e.researchArea && (
+            <>
+              <dt className="font-medium text-charcoal">Research area</dt>
+              <dd>{e.researchArea}</dd>
+            </>
+          )}
+          {e.thesis && (
+            <>
+              <dt className="font-medium text-charcoal">Thesis</dt>
+              <dd>{e.thesis}</dd>
+            </>
+          )}
+          {e.supervisor && (
+            <>
+              <dt className="font-medium text-charcoal">Supervisor</dt>
+              <dd>{e.supervisor}</dd>
+            </>
+          )}
+        </dl>
+        {e.subjects && e.subjects.length > 0 && (
+          <ul className="flex flex-wrap gap-1.5" aria-label="Main subjects">
+            {e.subjects.map((s) => (
+              <li key={s} className="rounded-full border border-line px-2.5 py-0.5 text-xs text-ink-muted">
+                {s}
+              </li>
+            ))}
+          </ul>
         )}
-      </dl>
+        {e.notes && <p className="text-sm">{e.notes}</p>}
+      </div>
     ),
   }));
 
   return (
     <>
-      <PageHeader eyebrow="About me" title="An academic journey through forests in three countries" artwork="contours" seed={17}>
+      <PageHeader eyebrow="About me" title="A forester’s journey through three countries" artwork="contours" seed={17}>
         <p>{profile.intro}</p>
       </PageHeader>
 
@@ -79,7 +100,13 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <dt className="text-sm text-ink-muted">Degrees</dt>
-                  <dd className="mt-0.5 text-charcoal">BSc Forestry · MSc Environmental Sciences · MS/MPhil Forestry · MSc Forestry</dd>
+                  <dd className="mt-0.5 text-charcoal">
+                    {education.map((e) => `${e.degree} ${e.field}`).join(" · ")}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-ink-muted">Languages</dt>
+                  <dd className="mt-0.5 text-charcoal">{languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(", ")}</dd>
                 </div>
                 <div>
                   <dt className="text-sm text-ink-muted">Interests</dt>
@@ -134,7 +161,7 @@ export default function AboutPage() {
                     <span className="block text-sm text-ink-muted">{d.provider}</span>
                   </span>
                 </span>
-                <span className="text-sm text-ink-muted tabular-nums">{d.year}</span>
+                {d.year && <span className="text-sm text-ink-muted tabular-nums">{d.year}</span>}
               </li>
             ))}
           </ul>
@@ -143,6 +170,28 @@ export default function AboutPage() {
             <Pending label="Add workshops, courses, certificates or conferences in src/content/education.ts" />
           </div>
         )}
+      </section>
+
+      <section aria-labelledby="awards-title" className="border-t border-line bg-sage-50 py-20 md:py-24">
+        <div className="container-page">
+          <SectionHeading eyebrow="Recognition" title="Scholarships, awards and grants" id="awards-title" />
+          <ul className="grid gap-6 md:grid-cols-2">
+            {awards.map((a, i) => (
+              <Reveal as="li" key={a.title} delay={i * 80} className="flex gap-5 rounded-xl border border-line bg-paper p-7">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sage-100 text-forest-700">
+                  <Award size={20} aria-hidden />
+                </span>
+                <div>
+                  <h3 className="text-xl leading-snug font-medium">
+                    {a.title}
+                    {a.year && <span className="ml-2 font-sans text-sm font-normal text-ink-muted">{a.year}</span>}
+                  </h3>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-muted">{a.detail}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <CallToAction />

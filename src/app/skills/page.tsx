@@ -6,6 +6,7 @@ import { Pending } from "@/components/Pending";
 import { Reveal } from "@/components/Reveal";
 import { learning, skillGroups, skillLevels } from "@/content/skills";
 import type { SkillLevel } from "@/content/types";
+import { showPlaceholders } from "@/lib/placeholders";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -121,6 +122,7 @@ export default function SkillsPage() {
                         ))}
                       </ul>
                     </div>
+                    {(l.resources.length > 0 || showPlaceholders) && (
                     <div>
                       <p className="text-xs font-semibold tracking-[0.12em] text-sage-600 uppercase">Courses & resources</p>
                       {l.resources.length > 0 ? (
@@ -143,6 +145,7 @@ export default function SkillsPage() {
                         </div>
                       )}
                     </div>
+                    )}
                   </div>
                 </Reveal>
               );

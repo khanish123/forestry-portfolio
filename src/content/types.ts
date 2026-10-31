@@ -41,12 +41,19 @@ export interface Education {
   degree: string;
   field: string;
   institution: string;
+  /** Department / school, shown under the institution. */
+  department?: string;
   country: string;
   start: Maybe;
   end: Maybe;
-  thesis: Maybe;
-  supervisor: Maybe;
-  notes: Maybe;
+  /** Main research area or thesis topic. */
+  researchArea?: string;
+  /** Optional thesis title (shown only when provided). */
+  thesis?: string;
+  /** Optional supervisor(s) (shown only when provided). */
+  supervisor?: string;
+  subjects?: string[];
+  notes?: string;
 }
 
 export interface Experience {
@@ -55,7 +62,9 @@ export interface Experience {
   location: Maybe;
   start: Maybe;
   end: Maybe;
-  category: "Research" | "Field research" | "Forestry" | "Development sector";
+  category: "Research" | "Field research" | "Forest inventory" | "Consultancy" | "Internship" | "Development sector";
+  /** Project the role was part of. */
+  project?: string;
   summary: Maybe;
   responsibilities: string[];
   /** Hint shown next to placeholders so the owner knows what to add. */

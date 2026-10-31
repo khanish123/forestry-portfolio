@@ -21,6 +21,10 @@ import type { Publication } from "./types";
  */
 export const publications: Publication[] = [];
 
+/** Shown while the list above is empty. Source: academic CV. */
+export const publicationSummary =
+  "I have authored 8 peer-reviewed scientific articles in national and international journals. A detailed list will be added here; the complete record is available on Google Scholar.";
+
 /**
  * Optional: manuscripts in preparation or under review. Use cautiously and
  * only describe them as "in preparation" or "under review" when accurate.

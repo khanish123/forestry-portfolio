@@ -15,9 +15,9 @@ export const projects: Project[] = [
       "Evaluating the transferability of tree height–diameter models using parametric and data-driven approaches",
     shortTitle: "Transferability of height–diameter models",
     status: null,
-    period: null,
-    location: null,
-    affiliation: "University of Eastern Finland",
+    period: "2025 – 2026",
+    location: "Joensuu, Finland",
+    affiliation: "School of Forest Sciences, University of Eastern Finland",
     summary:
       "Height–diameter models are widely used to predict tree heights in forest inventories, but models fitted in one setting are often applied elsewhere. This project compares parametric and data-driven modelling approaches in terms of how well their predictions transfer beyond the data used to fit them.",
     researchQuestions: [

@@ -73,7 +73,7 @@ export function Header({ name, cvPath }: { name: string; cvPath: string | null }
         </nav>
 
         <div className="flex items-center gap-2">
-          {cvPath && (
+          {cvPath ? (
             <a
               href={withBase(cvPath)}
               download
@@ -82,6 +82,13 @@ export function Header({ name, cvPath }: { name: string; cvPath: string | null }
               <Download size={15} aria-hidden /> CV
               <span className="sr-only">(PDF)</span>
             </a>
+          ) : (
+            <Link
+              href="/contact#cv"
+              className="hidden items-center gap-1.5 rounded-md border border-forest-800/25 px-3 py-1.5 text-sm font-medium text-forest-900 transition-colors hover:border-forest-800/60 hover:bg-sage-50 sm:inline-flex"
+            >
+              CV
+            </Link>
           )}
           <button
             type="button"

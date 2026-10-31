@@ -25,13 +25,16 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: "Forest inventory",
+    title: "Forest inventory and fieldwork",
     description: "Field-based measurement and description of forests.",
     icon: "trees",
     skills: [
-      { name: "Forest measurements", level: "Proficient" },
+      { name: "Forest measurements and sample plot establishment", level: "Proficient" },
+      { name: "Biomass and carbon stock data collection", level: "Proficient" },
       { name: "Tree height–diameter relationships", level: "Proficient" },
       { name: "Forest structure assessment", level: "Working knowledge" },
+      { name: "Field instruments", level: "Proficient", note: "hypsometer incl. ultrasonic, clinometer, Haga altimeter, increment borer" },
+      { name: "Socio-economic and baseline surveys", level: "Working knowledge" },
     ],
   },
   {
@@ -39,7 +42,8 @@ export const skillGroups: SkillGroup[] = [
     description: "Handling and analysing spatial data.",
     icon: "map",
     skills: [
-      { name: "GIS (basic)", level: "Foundational" },
+      { name: "GPS navigation and area measurement", level: "Proficient" },
+      { name: "GIS (QGIS)", level: "Foundational" },
       { name: "PostGIS", level: "Foundational" },
       { name: "Remote sensing", level: "Foundational", note: "Actively developing" },
     ],
@@ -52,6 +56,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "Data cleaning and preparation", level: "Proficient" },
       { name: "Data visualisation", level: "Working knowledge" },
       { name: "Statistical interpretation", level: "Working knowledge" },
+      { name: "MS Excel", level: "Proficient" },
     ],
   },
   {

@@ -7,7 +7,7 @@ import { Pending } from "@/components/Pending";
 import { Reveal } from "@/components/Reveal";
 import { Tag } from "@/components/Tag";
 import { profile } from "@/content/profile";
-import { publications, workInProgress } from "@/content/publications";
+import { publicationSummary, publications, workInProgress } from "@/content/publications";
 
 export const metadata: Metadata = {
   title: "Publications",
@@ -29,6 +29,7 @@ export default function PublicationsPage() {
       </PageHeader>
 
       <section className="container-page py-16 md:py-20">
+        {sorted.length > 0 && (
         <div className="mb-10 flex flex-wrap items-center gap-3">
           {profile.links.googleScholar ? (
             <a
@@ -48,14 +49,23 @@ export default function PublicationsPage() {
             </a>
           )}
         </div>
+        )}
 
         {sorted.length === 0 ? (
           <div className="rounded-xl border border-dashed border-sage-300 bg-white/50 px-6 py-14 text-center">
             <FileText size={28} className="mx-auto text-sage-500" aria-hidden />
-            <h2 className="mt-4 text-2xl font-medium">Publications will be listed here</h2>
-            <p className="mx-auto mt-3 max-w-lg text-[0.95rem] leading-relaxed text-ink-muted">
-              Verified publications will appear here with authors, journal, year and DOI.
-            </p>
+            <h2 className="mt-4 text-2xl font-medium">8 peer-reviewed articles</h2>
+            <p className="mx-auto mt-3 max-w-lg text-[0.95rem] leading-relaxed text-ink-muted">{publicationSummary}</p>
+            {profile.links.googleScholar && (
+              <a
+                href={profile.links.googleScholar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-md bg-forest-800 px-5 py-2.5 text-sm font-medium text-paper hover:bg-forest-900"
+              >
+                <GraduationCap size={16} aria-hidden /> View on Google Scholar <ArrowUpRight size={14} aria-hidden />
+              </a>
+            )}
             <div className="mt-5">
               <Pending label="Add verified publications in src/content/publications.ts" />
             </div>

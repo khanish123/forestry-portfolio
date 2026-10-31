@@ -6,6 +6,7 @@ import { CallToAction } from "@/components/CallToAction";
 import { CvButton } from "@/components/CvButton";
 import { Pending } from "@/components/Pending";
 import { Portrait } from "@/components/Portrait";
+import { ProfilePanel } from "@/components/ProfilePanel";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/PageHeader";
 import { SocialLinks } from "@/components/SocialLinks";
@@ -72,8 +73,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[22rem] animate-fade-up lg:max-w-none [animation-delay:200ms]">
-            <Portrait name={displayName} />
+          <div className="mx-auto w-full max-w-md animate-fade-up lg:max-w-none [animation-delay:200ms]">
+            {profile.portrait ? <Portrait name={displayName} /> : <ProfilePanel />}
           </div>
         </div>
 
@@ -170,7 +171,7 @@ export default function HomePage() {
             </ButtonLink>
           }
         />
-        <ol className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-3">
           {education.map((e, i) => (
             <Reveal as="li" key={`${e.institution}-${e.field}-${i}`} delay={i * 70} className="flex flex-col bg-paper p-6">
               <span className="grid h-9 w-9 place-items-center rounded-full bg-sage-100 text-forest-700">
@@ -179,6 +180,7 @@ export default function HomePage() {
               <p className="mt-5 text-xs font-semibold tracking-[0.14em] text-sage-600 uppercase">{e.degree}</p>
               <h3 className="mt-1.5 text-xl font-medium">{e.field}</h3>
               <p className="mt-2 text-[0.95rem] leading-snug text-ink-muted">{e.institution}</p>
+              {e.researchArea && <p className="mt-3 text-sm leading-snug text-forest-700">{e.researchArea}</p>}
               <p className="mt-auto pt-4 text-sm text-ink-muted">
                 {e.country} · {e.end ?? <Pending label="Year" />}
               </p>

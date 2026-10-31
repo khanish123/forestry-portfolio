@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { CvButton } from "@/components/CvButton";
 import { PageHeader } from "@/components/PageHeader";
 import { Pending } from "@/components/Pending";
+import { showPlaceholders } from "@/lib/placeholders";
 import { profile } from "@/content/profile";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 function Row({ icon, label, value, href }: { icon: ReactNode; label: string; value: string | null | undefined; href?: string | null }) {
+  if (!value && !showPlaceholders) return null;
   return (
     <li className="flex items-start gap-4 py-4">
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sage-100 text-forest-700">{icon}</span>
@@ -55,15 +57,17 @@ export default function ContactPage() {
 
       <section className="container-page grid gap-14 py-16 md:py-20 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
         <div className="space-y-10">
-          <div className="rounded-xl bg-forest-900 p-7 text-paper">
+          <div id="cv" className="rounded-xl bg-forest-900 p-7 text-paper">
             <FileText size={24} aria-hidden className="text-sage-300" />
             <h2 className="mt-4 text-2xl font-medium text-paper">Academic CV</h2>
             <p className="mt-2 text-sm leading-relaxed text-sage-200">
               Full details of education, research experience, skills and outputs.
             </p>
-            <p className="mt-2 text-xs text-sage-300">
-              {profile.cvLastUpdated ? `Last updated: ${profile.cvLastUpdated}` : "Last updated: to be confirmed"}
-            </p>
+            {profile.cvPath ? (
+              profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>
+            ) : (
+              <p className="mt-2 text-sm leading-relaxed text-sage-200">Available on request — I am happy to share my full CV by email.</p>
+            )}
             <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
           </div>
 

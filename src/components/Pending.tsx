@@ -1,3 +1,4 @@
+import { showPlaceholders } from "@/lib/placeholders";
 import { cn } from "@/lib/utils";
 
 /**
@@ -5,6 +6,7 @@ import { cn } from "@/lib/utils";
  * Search the codebase for `null` in /src/content to find what to fill in.
  */
 export function Pending({ label, className }: { label: string; className?: string }) {
+  if (!showPlaceholders) return null;
   return (
     <span
       className={cn(
@@ -22,6 +24,7 @@ export function Pending({ label, className }: { label: string; className?: strin
 }
 
 export function DraftNote({ children = "Draft description — please confirm" }: { children?: React.ReactNode }) {
+  if (!showPlaceholders) return null;
   return (
     <p className="inline-flex items-center gap-1.5 text-xs font-medium text-pending">
       <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-pending/70" />
