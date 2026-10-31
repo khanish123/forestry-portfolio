@@ -66,7 +66,7 @@ export function ContactForm({ email }: { email: string | null }) {
   }
 
   const field =
-    "mt-1.5 block w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-[0.95rem] text-charcoal placeholder:text-sage-500 transition-colors focus:border-forest-600 focus:outline-none focus:ring-2 focus:ring-forest-600/20 aria-[invalid=true]:border-red-700";
+    "mt-1.5 block w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-[0.95rem] text-charcoal placeholder:text-sage-500 transition-colors focus:border-forest-600 focus:outline-none focus:ring-2 focus:ring-forest-600/20 aria-[invalid=true]:border-red-700";
   const label = "text-sm font-medium text-charcoal";
 
   return (

@@ -47,7 +47,7 @@ export default function SkillsPage() {
 
       <section aria-labelledby="skills-title" className="container-page py-16 md:py-20">
         <h2 id="skills-title" className="sr-only">Established skills</h2>
-        <div className="mb-10 rounded-xl border border-line bg-white/60 p-5">
+        <div className="mb-10 rounded-xl border border-line bg-surface p-5">
           <p className="flex items-center gap-2 text-sm font-semibold text-charcoal">
             <Info size={16} className="text-forest-600" aria-hidden /> How to read skill levels
           </p>

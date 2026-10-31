@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/source-serif-4";
+import "@fontsource-variable/fraunces";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { displayName, profile, site } from "@/content/profile";
+import { theme, themeColors } from "@/content/theme";
 
 const fullTitle = `${displayName} — ${profile.role}`;
 
@@ -27,14 +29,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1b3326",
+  themeColor: themeColors[theme],
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" suppressHydrationWarning>
+    <html lang="en-GB" data-theme={theme} suppressHydrationWarning>
       <head>
         {/* Enables reveal-on-scroll only when JavaScript is available */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

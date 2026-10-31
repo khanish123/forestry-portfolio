@@ -58,6 +58,20 @@ Add an object to the `publications` array in `publications.ts` (see the commente
 
 ---
 
+## Themes
+
+Five themes are built in. Choose one by changing `chosenTheme` in `src/content/theme.ts`:
+
+| Theme | Look | Home-page layout |
+|---|---|---|
+| `forest` | Sage Forest: off-white, sage and dark green, serif headings | Split, with a key-facts panel |
+| `boreal` | Boreal Night: dark spruce background, pale lichen accents | Split |
+| `birch` | Nordic Birch: crisp white, sans-serif headings, square corners | Minimal: oversized name, ruled facts list |
+| `journal` | Field Journal: warm paper, moss and bark tones, Fraunces serif | Centred editorial, with a tree-ring facts band |
+| `canopy` | Tropical Canopy: deep teal accents, rounded corners | Full-width coloured banner |
+
+To preview a theme on Vercel without changing code, set the environment variable `NEXT_PUBLIC_THEME` (e.g. `journal`) and redeploy.
+
 ## Contact form
 
 The form works without a server:

@@ -87,7 +87,7 @@ export default function AboutPage() {
             )}
           </Reveal>
           <Reveal delay={100}>
-            <aside aria-label="At a glance" className="rounded-xl border border-line bg-white/60 p-7">
+            <aside aria-label="At a glance" className="rounded-xl border border-line bg-surface p-7">
               <p className="eyebrow">At a glance</p>
               <dl className="mt-5 space-y-5 text-[0.95rem]">
                 <div>

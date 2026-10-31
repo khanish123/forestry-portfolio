@@ -362,7 +362,7 @@ export function Artwork({
     <svg
       viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio="xMidYMid slice"
-      className={cn("block h-full w-full", className)}
+      className={cn("artwork block h-full w-full", className)}
       role={title ? "img" : undefined}
       aria-hidden={title ? undefined : true}
       aria-label={title}

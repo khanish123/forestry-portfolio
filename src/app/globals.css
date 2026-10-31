@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./themes.css";
 
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -30,6 +31,12 @@
 
   --color-pending: #9a6b1f;
   --color-pending-bg: #fbf3e3;
+
+  --color-surface: #fdfdfb;
+  --color-on-image: #f8f7f2;
+  --color-bark-100: #efe9dc;
+  --color-bark-500: #8a6d45;
+  --color-bark-700: #6b4f2a;
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   @keyframes fade-up {

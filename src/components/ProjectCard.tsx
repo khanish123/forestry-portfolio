@@ -8,7 +8,7 @@ import { Visual } from "./Visual";
 /** Full project card used on the Projects page. */
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <article id={project.id} aria-labelledby={`${project.id}-title`} className="overflow-hidden rounded-xl border border-line bg-white/60">
+    <article id={project.id} aria-labelledby={`${project.id}-title`} className="overflow-hidden rounded-xl border border-line bg-surface">
       <div className="grid lg:grid-cols-[minmax(0,20rem)_1fr]">
         <Visual artwork={project.artwork} seed={index * 13 + 5} className="aspect-[16/9] lg:m-6 lg:mr-0 lg:aspect-[4/3] lg:self-start lg:rounded-lg" />
         <div className="p-6 md:p-9">

@@ -1,19 +1,16 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Code, GraduationCap, Leaf, Radar, Satellite, Brain } from "lucide-react";
-import { Artwork } from "@/components/Artwork";
 import { ButtonLink } from "@/components/Button";
 import { CallToAction } from "@/components/CallToAction";
-import { CvButton } from "@/components/CvButton";
+import { Hero } from "@/components/Hero";
 import { Pending } from "@/components/Pending";
-import { Portrait } from "@/components/Portrait";
-import { ProfilePanel } from "@/components/ProfilePanel";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/PageHeader";
-import { SocialLinks } from "@/components/SocialLinks";
 import { Tag } from "@/components/Tag";
 import { Visual } from "@/components/Visual";
 import { education } from "@/content/education";
-import { displayName, interestKeywords, nameIsPlaceholder, profile, site, siteImages } from "@/content/profile";
+import { displayName, interestKeywords, profile, site, siteImages } from "@/content/profile";
+import { heroLayout } from "@/content/theme";
 import { projects } from "@/content/projects";
 import { researchAreas } from "@/content/research";
 import { learning } from "@/content/skills";
@@ -22,7 +19,6 @@ const learningIcons = { code: Code, satellite: Satellite, radar: Radar, brain: B
 
 export default function HomePage() {
   const featured = projects.filter((p) => p.featured).slice(0, 3);
-  const countries = Array.from(new Set(education.map((e) => e.country)));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -39,65 +35,7 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* ───────────── Hero ───────────── */}
-      <section className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_40%,black_20%,transparent_75%)]">
-          <Artwork kind="contours" seed={3} faint />
-        </div>
-        <div className="container-page relative grid items-center gap-14 pt-14 pb-20 md:pt-20 lg:grid-cols-[1.35fr_1fr] lg:gap-20 lg:pt-24 lg:pb-28">
-          <div>
-            <p className="eyebrow animate-fade-up">Forestry · Forest Ecology · Forest Data Analysis</p>
-            <h1 className="mt-5 animate-fade-up text-[2.75rem] leading-[1.05] font-medium tracking-tight text-charcoal sm:text-6xl lg:text-[4.25rem] [animation-delay:60ms]">
-              {displayName}
-            </h1>
-            {nameIsPlaceholder && (
-              <div className="mt-3">
-                <Pending label="Add your name in src/content/profile.ts" />
-              </div>
-            )}
-            <p className="mt-5 animate-fade-up font-serif text-xl text-forest-700 italic md:text-2xl [animation-delay:120ms]">
-              {profile.role}
-              {profile.affiliation && <span className="text-ink-muted not-italic"> · {profile.affiliation}</span>}
-            </p>
-            <p className="prose-body mt-6 max-w-xl animate-fade-up [animation-delay:180ms]">{profile.intro}</p>
-
-            <div className="mt-9 flex animate-fade-up flex-wrap items-center gap-3 [animation-delay:240ms]">
-              <CvButton className="px-6 py-3" />
-              <ButtonLink href="/contact" variant="secondary" className="px-6 py-3">
-                Research collaboration <ArrowRight size={16} aria-hidden />
-              </ButtonLink>
-            </div>
-
-            <div className="mt-9 flex animate-fade-up flex-wrap items-center gap-4 [animation-delay:300ms]">
-              <SocialLinks />
-            </div>
-          </div>
-
-          <div className="mx-auto w-full max-w-md animate-fade-up lg:max-w-none [animation-delay:200ms]">
-            {profile.portrait ? <Portrait name={displayName} /> : <ProfilePanel />}
-          </div>
-        </div>
-
-        {/* Quick facts */}
-        <div className="relative border-y border-line bg-white/50">
-          <dl className="container-page grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            <div className="py-5 sm:pr-6">
-              <dt className="text-xs font-semibold tracking-[0.14em] text-sage-600 uppercase">Education</dt>
-              <dd className="mt-1.5 text-[0.95rem] text-charcoal">
-                {education.length} degrees across {countries.join(", ").replace(/, ([^,]*)$/, " & $1")}
-              </dd>
-            </div>
-            <div className="py-5 sm:px-6">
-              <dt className="text-xs font-semibold tracking-[0.14em] text-sage-600 uppercase">Research focus</dt>
-              <dd className="mt-1.5 text-[0.95rem] text-charcoal">Forest structure, tree growth & plantation performance</dd>
-            </div>
-            <div className="py-5 sm:pl-6">
-              <dt className="text-xs font-semibold tracking-[0.14em] text-sage-600 uppercase">Core methods</dt>
-              <dd className="mt-1.5 text-[0.95rem] text-charcoal">Field inventory & statistical modelling in R</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
+      <Hero layout={heroLayout} />
 
       {/* ───────────── Research interests ───────────── */}
       <section aria-labelledby="interests-title" className="container-page py-20 md:py-28">
@@ -194,7 +132,7 @@ export default function HomePage() {
         <Visual image={siteImages.homeBand} alt={siteImages.homeBandAlt} artwork="canopy" seed={42} className="h-56 md:h-80" sizes="100vw" />
         <div className="absolute inset-0 flex items-end bg-gradient-to-t from-forest-950/60 to-transparent">
           <div className="container-page pb-8">
-            <p className="max-w-2xl font-serif text-xl leading-snug text-paper italic md:text-2xl">
+            <p className="max-w-2xl font-serif text-xl leading-snug text-on-image italic md:text-2xl">
               Field measurements, statistical models and spatial data — used together to support sustainable forest management.
             </p>
           </div>

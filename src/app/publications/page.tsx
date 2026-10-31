@@ -52,7 +52,7 @@ export default function PublicationsPage() {
         )}
 
         {sorted.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-sage-300 bg-white/50 px-6 py-14 text-center">
+          <div className="rounded-xl border border-dashed border-sage-300 bg-surface px-6 py-14 text-center">
             <FileText size={28} className="mx-auto text-sage-500" aria-hidden />
             <h2 className="mt-4 text-2xl font-medium">8 peer-reviewed articles</h2>
             <p className="mx-auto mt-3 max-w-lg text-[0.95rem] leading-relaxed text-ink-muted">{publicationSummary}</p>

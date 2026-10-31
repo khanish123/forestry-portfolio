@@ -1,0 +1,181 @@
+/* Alternative colour themes. The active theme is chosen in src/content/theme.ts.
+   Each theme overrides the design tokens defined in globals.css (@theme). */
+
+/* Boreal Night (dark) */
+[data-theme="boreal"] {
+  color-scheme: dark;
+  --color-forest-950: #050b08;
+  --color-forest-900: #d6e4c6;
+  --color-forest-800: #c2d7ac;
+  --color-forest-700: #a9cf8f;
+  --color-forest-600: #8fbf78;
+  --color-forest-500: #6f9e5c;
+  --color-sage-600: #a8b7a2;
+  --color-sage-500: #7f9179;
+  --color-sage-400: #5d6e58;
+  --color-sage-300: #3f4f3f;
+  --color-sage-200: #2e3c31;
+  --color-sage-100: #213028;
+  --color-sage-50: #18241d;
+  --color-paper: #0f1813;
+  --color-paper-dim: #131e18;
+  --color-surface: #16211b;
+  --color-charcoal: #eef2ea;
+  --color-ink: #d3dbcf;
+  --color-ink-muted: #a6b0a2;
+  --color-line: #273429;
+  --color-pending: #e0b25c;
+  --color-pending-bg: #2b2414;
+  --color-bark-100: #1f2a23;
+  --color-bark-500: #b08d5e;
+  --color-bark-700: #d1a974;
+  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, serif;
+}
+
+/* Nordic Birch (minimal, sans-serif) */
+[data-theme="birch"] {
+  color-scheme: light;
+  --color-forest-950: #0b1410;
+  --color-forest-900: #13261d;
+  --color-forest-800: #1d3a2c;
+  --color-forest-700: #2a5440;
+  --color-forest-600: #3a6b53;
+  --color-forest-500: #5a8a71;
+  --color-sage-600: #565d5a;
+  --color-sage-500: #868d89;
+  --color-sage-400: #a9afab;
+  --color-sage-300: #c9cecb;
+  --color-sage-200: #dde1de;
+  --color-sage-100: #eceeec;
+  --color-sage-50: #f4f5f4;
+  --color-paper: #fcfcfb;
+  --color-paper-dim: #f3f4f2;
+  --color-surface: #ffffff;
+  --color-charcoal: #111413;
+  --color-ink: #1f2422;
+  --color-ink-muted: #545b58;
+  --color-line: #e3e6e3;
+  --color-pending: #8a5a12;
+  --color-pending-bg: #fbf3e3;
+  --color-bark-100: #f1f0ec;
+  --color-bark-500: #8c8a83;
+  --color-bark-700: #4a4843;
+  --font-serif: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+}
+
+/* Field Journal (warm, editorial) */
+[data-theme="journal"] {
+  color-scheme: light;
+  --color-forest-950: #1d1a12;
+  --color-forest-900: #2f3a1c;
+  --color-forest-800: #3e4d24;
+  --color-forest-700: #55662f;
+  --color-forest-600: #6b7d3c;
+  --color-forest-500: #8a9a55;
+  --color-sage-600: #685e4b;
+  --color-sage-500: #968a70;
+  --color-sage-400: #b7ab8f;
+  --color-sage-300: #d3c7a9;
+  --color-sage-200: #e4dac1;
+  --color-sage-100: #eee6d2;
+  --color-sage-50: #f4eee0;
+  --color-paper: #f8f3e8;
+  --color-paper-dim: #f0e8d6;
+  --color-surface: #fbf8f0;
+  --color-charcoal: #2a241c;
+  --color-ink: #3a3228;
+  --color-ink-muted: #655a4b;
+  --color-line: #e2d8c2;
+  --color-pending: #8f4f15;
+  --color-pending-bg: #f6e6cf;
+  --color-bark-100: #efe3cc;
+  --color-bark-500: #9a6b3c;
+  --color-bark-700: #6b4423;
+  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 10px;
+}
+
+/* Tropical Canopy (teal, rounded) */
+[data-theme="canopy"] {
+  color-scheme: light;
+  --color-forest-950: #04201f;
+  --color-forest-900: #073735;
+  --color-forest-800: #0b4a47;
+  --color-forest-700: #11625d;
+  --color-forest-600: #1a7a72;
+  --color-forest-500: #2f978c;
+  --color-sage-600: #4a6562;
+  --color-sage-500: #7c9a95;
+  --color-sage-400: #a3bfb9;
+  --color-sage-300: #c3d9d3;
+  --color-sage-200: #d8e8e3;
+  --color-sage-100: #e7f2ee;
+  --color-sage-50: #f1f8f5;
+  --color-paper: #fbfcfa;
+  --color-paper-dim: #f1f5f2;
+  --color-surface: #ffffff;
+  --color-charcoal: #142321;
+  --color-ink: #22312f;
+  --color-ink-muted: #4c5d5a;
+  --color-line: #dbe5e1;
+  --color-pending: #8f5a12;
+  --color-pending-bg: #fbf1df;
+  --color-bark-100: #f3ece0;
+  --color-bark-500: #a07a4f;
+  --color-bark-700: #6e5233;
+  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, serif;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+}
+
+[data-theme="birch"] h1, [data-theme="birch"] h2, [data-theme="birch"] h3 { letter-spacing: -0.025em; }
+[data-theme="journal"] h1, [data-theme="journal"] h2 { font-variation-settings: "SOFT" 50, "WONK" 0; }
+
+/* Illustrations follow the active theme */
+.artwork [fill="#1b3326"] { fill: var(--color-forest-900); }
+.artwork [stroke="#1b3326"] { stroke: var(--color-forest-900); }
+.artwork [fill="#234231"] { fill: var(--color-forest-800); }
+.artwork [stroke="#234231"] { stroke: var(--color-forest-800); }
+.artwork [fill="#2d533d"] { fill: var(--color-forest-700); }
+.artwork [stroke="#2d533d"] { stroke: var(--color-forest-700); }
+.artwork [fill="#3b6a4e"] { fill: var(--color-forest-600); }
+.artwork [stroke="#3b6a4e"] { stroke: var(--color-forest-600); }
+.artwork [fill="#4f8063"] { fill: var(--color-forest-500); }
+.artwork [stroke="#4f8063"] { stroke: var(--color-forest-500); }
+.artwork [fill="#6b7c62"] { fill: var(--color-sage-600); }
+.artwork [stroke="#6b7c62"] { stroke: var(--color-sage-600); }
+.artwork [fill="#84957a"] { fill: var(--color-sage-500); }
+.artwork [stroke="#84957a"] { stroke: var(--color-sage-500); }
+.artwork [fill="#a2b097"] { fill: var(--color-sage-400); }
+.artwork [stroke="#a2b097"] { stroke: var(--color-sage-400); }
+.artwork [fill="#bfc9b5"] { fill: var(--color-sage-300); }
+.artwork [stroke="#bfc9b5"] { stroke: var(--color-sage-300); }
+.artwork [fill="#d7ddcf"] { fill: var(--color-sage-200); }
+.artwork [stroke="#d7ddcf"] { stroke: var(--color-sage-200); }
+.artwork [fill="#e8ece2"] { fill: var(--color-sage-100); }
+.artwork [stroke="#e8ece2"] { stroke: var(--color-sage-100); }
+.artwork [fill="#f2f4ee"] { fill: var(--color-sage-50); }
+.artwork [stroke="#f2f4ee"] { stroke: var(--color-sage-50); }
+.artwork [fill="#f8f7f2"] { fill: var(--color-paper); }
+.artwork [stroke="#f8f7f2"] { stroke: var(--color-paper); }
+.artwork [fill="#f0eee6"] { fill: var(--color-paper-dim); }
+.artwork [stroke="#f0eee6"] { stroke: var(--color-paper-dim); }
+.artwork [fill="#59615c"] { fill: var(--color-ink-muted); }
+.artwork [stroke="#59615c"] { stroke: var(--color-ink-muted); }
+.artwork [fill="#9a6b1f"] { fill: var(--color-pending); }
+.artwork [stroke="#9a6b1f"] { stroke: var(--color-pending); }
+.artwork [fill="#efe9dc"] { fill: var(--color-bark-100); }
+.artwork [stroke="#efe9dc"] { stroke: var(--color-bark-100); }
+.artwork [fill="#8a6d45"] { fill: var(--color-bark-500); }
+.artwork [stroke="#8a6d45"] { stroke: var(--color-bark-500); }
+.artwork [fill="#6b4f2a"] { fill: var(--color-bark-700); }
+.artwork [stroke="#6b4f2a"] { stroke: var(--color-bark-700); }
