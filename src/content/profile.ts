@@ -89,5 +89,5 @@ export const heroFacts: { label: string; value: string }[] = [
  * While null, the forms fall back to FormSubmit (see src/lib/sendForm.ts).
  */
 export const formDelivery: { web3formsKey: string | null } = {
-  web3formsKey: null,
+  web3formsKey: "60be1da1-389e-4f3c-8fed-3c63c1432457",
 };
