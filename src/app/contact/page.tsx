@@ -57,18 +57,27 @@ export default function ContactPage() {
 
       <section className="container-page grid gap-14 py-16 md:py-20 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
         <div className="space-y-10">
-          <div id="cv" className="rounded-xl bg-forest-900 p-7 text-paper">
+          <div id="cv" className="scroll-mt-24 rounded-xl bg-forest-900 p-7 text-paper">
             <FileText size={24} aria-hidden className="text-sage-300" />
             <h2 className="mt-4 text-2xl font-medium text-paper">Academic CV</h2>
-            <p className="mt-2 text-sm leading-relaxed text-sage-200">
-              Full details of education, research experience, skills and outputs.
-            </p>
             {profile.cvPath ? (
-              profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-sage-200">
+                  Full details of education, research experience, skills and outputs.
+                </p>
+                {profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>}
+                <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
+              </>
             ) : (
-              <p className="mt-2 text-sm leading-relaxed text-sage-200">Available on request — I am happy to share my full CV by email.</p>
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-sage-200">
+                  My full CV is available on request. Leave your details and I will email it to you.
+                </p>
+                <div className="mt-6 rounded-lg bg-surface p-5">
+                  <ContactForm email={links.email} kind="cv" compact />
+                </div>
+              </>
             )}
-            <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
           </div>
 
           <div>
@@ -86,9 +95,9 @@ export default function ContactPage() {
         <div>
           <h2 className="text-2xl font-medium">Send a message</h2>
           <p className="mt-2 mb-8 text-[0.95rem] text-ink-muted">
-            For PhD opportunities, research collaborations, or professional enquiries. I aim to reply within a few working days.
+            For PhD opportunities, research collaborations, or professional enquiries. Your message is sent directly to my inbox, and I aim to reply within a few working days.
           </p>
-          <ContactForm email={links.email} />
+          <ContactForm email={links.email} kind="message" />
         </div>
       </section>
     </>

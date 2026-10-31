@@ -4,8 +4,8 @@ import { withBase } from "@/lib/utils";
 import { ButtonLink } from "./Button";
 
 /**
- * Downloads the CV when `profile.cvPath` is set; otherwise offers to request
- * it by email so the call to action is never missing.
+ * Downloads the CV when `profile.cvPath` is set; otherwise links to the
+ * CV request form on the contact page, which emails the request directly.
  */
 export function CvButton({ variant = "primary", className, label = "Download CV" }: { variant?: "primary" | "secondary" | "light"; className?: string; label?: string }) {
   if (profile.cvPath) {
@@ -18,9 +18,8 @@ export function CvButton({ variant = "primary", className, label = "Download CV"
     );
   }
   if (!profile.links.email) return null;
-  const subject = encodeURIComponent("CV request");
   return (
-    <ButtonLink href={`mailto:${profile.links.email}?subject=${subject}`} variant={variant} className={className}>
+    <ButtonLink href="/contact#cv" variant={variant} className={className}>
       <Mail size={16} aria-hidden />
       Request CV
     </ButtonLink>

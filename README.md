@@ -72,14 +72,17 @@ Five themes are built in. Choose one by changing `chosenTheme` in `src/content/t
 
 To preview a theme on Vercel without changing code, set the environment variable `NEXT_PUBLIC_THEME` (e.g. `journal`) and redeploy.
 
-## Contact form
+## Contact form and CV requests
 
-The form works without a server:
-- **Default**: opens the visitor's email app with a pre-filled message to `profile.links.email`.
-- **Recommended**: create a free [Formspree](https://formspree.io) form and set
-  `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT=https://formspree.io/f/xxxxxxx` (in Vercel → Project → Settings → Environment Variables, or `.env.local`).
+Both the **contact form** and the **CV request form** (Contact page → Academic CV) email submissions
+directly to `profile.links.email`, via [FormSubmit](https://formsubmit.co). No account or server is needed.
+The visitor's address is set as reply-to, so you can answer with your email client's **Reply**.
 
----
+**One-time activation:** the first submission sends an *"Activate Form"* email to your address.
+Click the link in it once; every submission after that is delivered. (Check your spam folder if it doesn't arrive.)
+
+Optional: after activation FormSubmit offers a random alias that hides your address. To use it (or Formspree instead),
+set `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`, e.g. `https://formsubmit.co/ajax/<your-alias>`, in Vercel and redeploy.
 
 ## Deployment
 
