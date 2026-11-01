@@ -29,7 +29,7 @@ export default function ResearchPage() {
           {researchAreas.map((a, i) => (
             <li key={a.id} className="shrink-0">
               <a href={`#${a.id}`} className="block rounded-md px-3 py-1.5 text-ink-muted transition-colors hover:bg-sage-100 hover:text-forest-900">
-                <span className="mr-1.5 font-serif text-sage-500">{i + 1}.</span>
+                <span className="mr-1.5 font-serif text-sage-600">{i + 1}.</span>
                 {a.title.replace(" and ", " & ")}
               </a>
             </li>

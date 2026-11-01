@@ -4,8 +4,11 @@ import type { Project } from "./types";
  * ✏️  EDIT ME — research projects.
  *
  * IMPORTANT: research questions and methods below are DRAFT descriptions
- * written from the project titles only. They contain no results. Please
- * review each one, correct the details, then set `draft: false`.
+ * written from the project titles (and, for the MSc project, the model names
+ * NLME, RE-EM tree and GPBoost). They contain no results. Please review each
+ * one, correct the details, then set `draft: false`.
+ * Figures: add PNG/JPG files to /public/images and set `image`.
+ * Repository: set `repository.url` once the code is public.
  * Add outputs (thesis, article, poster, code repository) only when they exist.
  */
 export const projects: Project[] = [
@@ -14,20 +17,20 @@ export const projects: Project[] = [
     title:
       "Evaluating the transferability of tree height–diameter models using parametric and data-driven approaches",
     shortTitle: "Transferability of height–diameter models",
-    status: null,
+    status: "Completed",
     period: "2025 – 2026",
     location: "Joensuu, Finland",
-    affiliation: "School of Forest Sciences, University of Eastern Finland",
+    affiliation: "MSc thesis research · School of Forest Sciences, University of Eastern Finland",
     summary:
-      "Height–diameter models are widely used to predict tree heights in forest inventories, but models fitted in one setting are often applied elsewhere. This project compares parametric and data-driven modelling approaches in terms of how well their predictions transfer beyond the data used to fit them.",
+      "Height–diameter models are widely used to predict tree heights in forest inventories, but models fitted in one setting are often applied elsewhere. This MSc thesis project compares a parametric nonlinear mixed-effects approach (NLME) with two data-driven mixed-effects approaches (RE-EM tree and GPBoost) in terms of how well their predictions transfer beyond the data used to fit them.",
     researchQuestions: [
       "How accurately do height–diameter models predict tree heights when applied outside the data used to fit them?",
       "How do parametric models compare with data-driven approaches in predictive accuracy and transferability?",
       "Which evaluation strategies give a realistic picture of model performance on new data?",
     ],
     methods: [
-      "Fitting nonlinear parametric height–diameter functions, including mixed-effects formulations",
-      "Fitting data-driven (machine learning) models for comparison",
+      "Fitting nonlinear mixed-effects (NLME) height–diameter models",
+      "Fitting data-driven mixed-effects models: RE-EM tree and GPBoost",
       "Validation designed to test transferability to independent data",
       "Comparison using standard accuracy metrics (e.g. bias and RMSE)",
     ],
@@ -37,6 +40,47 @@ export const projects: Project[] = [
     artwork: "growth-curve",
     draft: true,
     featured: true,
+    models: [
+      {
+        name: "Nonlinear mixed-effects model",
+        abbr: "NLME",
+        type: "Parametric",
+        description:
+          "A nonlinear height–diameter function with random effects that account for the grouped structure of forest inventory data (trees measured within plots or stands).",
+      },
+      {
+        name: "Random-effects expectation–maximisation tree",
+        abbr: "RE-EM tree",
+        type: "Data-driven",
+        description:
+          "A regression tree combined with random effects for grouped data, estimated iteratively with the expectation–maximisation (EM) algorithm.",
+      },
+      {
+        name: "Gaussian process boosting",
+        abbr: "GPBoost",
+        type: "Data-driven",
+        description:
+          "Gradient tree-boosting combined with grouped random effects, allowing a flexible, non-parametric fixed-effects component within a mixed-effects framework.",
+      },
+    ],
+    evaluation: {
+      metrics: [
+        { name: "RMSE", purpose: "Root mean square error: overall magnitude of prediction error" },
+        { name: "Bias", purpose: "Mean prediction error: systematic over- or under-prediction of tree height" },
+      ],
+      transferability: [
+        "Models are fitted on one dataset and evaluated on independent data that were not used for model fitting.",
+        "Predictive accuracy on the independent data is compared between the parametric (NLME) and data-driven (RE-EM tree, GPBoost) approaches.",
+      ],
+    },
+    figures: [
+      { title: "Figure 1", caption: "Height–diameter curves predicted by NLME, RE-EM tree and GPBoost", image: null },
+      { title: "Figure 2", caption: "Prediction accuracy (RMSE and bias) on independent validation data", image: null },
+      { title: "Figure 3", caption: "Residuals of predicted tree height against diameter, by model", image: null },
+    ],
+    repository: { url: null, label: "Analysis code on GitHub" },
+    dataNote:
+      "The tree measurement data used in this project are subject to data-use restrictions and are not published on this website. The MSc thesis document is likewise not distributed here.",
   },
   {
     id: "buner-restoration",

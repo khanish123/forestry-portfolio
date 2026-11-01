@@ -2,7 +2,11 @@ import type { Experience } from "./types";
 
 /**
  * ✏️  EDIT ME — professional, research and field experience (most recent first).
- * Source: academic CV.
+ * Source: academic CV. Chronology checked: no overlapping roles; total ≈ 4 years
+ * (3 + 4 + 6 + 12 + 12 + 12 months), matching the CV.
+ *
+ * `engagement` distinguishes paid employment, research traineeships,
+ * voluntary research assistance and internships.
  */
 export const experience: Experience[] = [
   {
@@ -12,6 +16,7 @@ export const experience: Experience[] = [
     start: "Oct 2025",
     end: "Dec 2025",
     category: "Research",
+    engagement: "Research traineeship",
     summary: "Research on tree height–diameter model transferability using parametric and data-driven approaches.",
     responsibilities: [],
   },
@@ -22,6 +27,7 @@ export const experience: Experience[] = [
     start: "Apr 2025",
     end: "Jul 2025",
     category: "Research",
+    engagement: "Voluntary research assistance",
     project: "Acidic peatland restoration project",
     summary: null,
     responsibilities: [
@@ -38,6 +44,7 @@ export const experience: Experience[] = [
     start: "Jul 2023",
     end: "Jan 2024",
     category: "Consultancy",
+    engagement: "Employment",
     project: "Feasibility Study PC-II for Command Area Development of Small Dams, Khyber Pakhtunkhwa",
     summary: null,
     responsibilities: [
@@ -52,6 +59,7 @@ export const experience: Experience[] = [
     start: "Aug 2018",
     end: "Jul 2019",
     category: "Research",
+    engagement: "Employment",
     project: "Sustainable Forest Management",
     summary: null,
     responsibilities: [
@@ -68,6 +76,7 @@ export const experience: Experience[] = [
     start: "Jul 2017",
     end: "Jun 2018",
     category: "Forest inventory",
+    engagement: "Employment",
     project: "Sustainable Forest Management",
     summary: null,
     responsibilities: [
@@ -83,6 +92,7 @@ export const experience: Experience[] = [
     start: "Nov 2013",
     end: "Oct 2014",
     category: "Internship",
+    engagement: "Internship",
     project: "Carbon Stock Assessment of Forests of Khyber Pakhtunkhwa",
     summary: null,
     responsibilities: [

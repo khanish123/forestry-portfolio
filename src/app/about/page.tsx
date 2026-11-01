@@ -91,8 +91,8 @@ export default function AboutPage() {
               <p className="eyebrow">At a glance</p>
               <dl className="mt-5 space-y-5 text-[0.95rem]">
                 <div>
-                  <dt className="text-sm text-ink-muted">Current role</dt>
-                  <dd className="mt-0.5 text-charcoal">{profile.affiliation ?? <Pending label="Current role / affiliation" />}</dd>
+                  <dt className="text-sm text-ink-muted">Latest degree</dt>
+                  <dd className="mt-0.5 text-charcoal">{profile.affiliation ?? <Pending label="Latest degree" />}</dd>
                 </div>
                 <div>
                   <dt className="text-sm text-ink-muted">Location</dt>

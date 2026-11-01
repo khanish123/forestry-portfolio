@@ -44,7 +44,9 @@ npm run build      # production build
 2. In `profile.ts` set `portrait: "/images/portrait.jpg"`.
 
 ### Your CV
-Replace `public/cv/academic-cv.pdf` with your CV (keep the file name) and set `cvLastUpdated` in `profile.ts`.
+`public/cv/academic-cv.pdf` is the public CV (date of birth, phone number, home address and referee contact
+details removed). To update it, replace the file (keep the name) and set `cvLastUpdated` in `profile.ts`.
+Visitors can also request the full CV with referee details through the form on the Contact page.
 
 ### Forest photography (optional)
 The site ships with original, lightweight SVG illustrations (crown maps, tree rings, plantation grids, growth curves, raster grids). To use photographs instead:
@@ -54,7 +56,13 @@ The site ships with original, lightweight SVG illustrations (crown maps, tree ri
 Use your own field photographs where possible: they add authenticity. Otherwise use properly licensed images (e.g. Unsplash). Compress images to under ~300 KB.
 
 ### Adding a publication
-Add an object to the `publications` array in `publications.ts` (see the commented example). Entries are grouped and sorted by year automatically, and DOI links are generated.
+Add an object to the `publications` array in `publications.ts`. Entries are grouped and sorted by year
+automatically, titles and DOIs become links, and your name is highlighted in the author list.
+`publicationCount` controls how many placeholder slots are shown for articles not yet listed.
+
+### Project figures and code
+For the MSc project in `projects.ts`, add figure images to `public/images` and set each `figures[].image`;
+set `repository.url` when the analysis code is public.
 
 ---
 

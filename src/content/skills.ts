@@ -6,10 +6,9 @@ import type { LearningItem, SkillGroup, SkillLevel } from "./types";
  * what you can demonstrate.
  */
 export const skillLevels: { level: SkillLevel; description: string }[] = [
-  { level: "Proficient", description: "Used independently in research projects" },
-  { level: "Working knowledge", description: "Used in projects, with occasional reference to documentation" },
-  { level: "Foundational", description: "Understand the core concepts; applied in limited contexts" },
-  { level: "Beginner", description: "Currently learning the basics" },
+  { level: "Established", description: "Used independently and repeatedly in research or professional work" },
+  { level: "Working knowledge", description: "Applied in projects; comfortable with occasional reference to documentation" },
+  { level: "Developing", description: "Basic or emerging skill, currently being strengthened through study and practice" },
 ];
 
 export const skillGroups: SkillGroup[] = [
@@ -18,10 +17,11 @@ export const skillGroups: SkillGroup[] = [
     description: "Building and evaluating statistical models for forest data.",
     icon: "chart",
     skills: [
-      { name: "R", level: "Proficient" },
-      { name: "Regression modelling", level: "Proficient" },
-      { name: "Mixed-effects models", level: "Working knowledge" },
+      { name: "R", level: "Established" },
+      { name: "Regression modelling", level: "Established" },
+      { name: "Nonlinear mixed-effects models (NLME)", level: "Working knowledge", note: "Applied in MSc thesis" },
       { name: "Model evaluation and validation", level: "Working knowledge" },
+      { name: "Tree-based mixed-effects models (RE-EM tree, GPBoost)", level: "Developing", note: "Applied in MSc thesis" },
     ],
   },
   {
@@ -29,23 +29,23 @@ export const skillGroups: SkillGroup[] = [
     description: "Field-based measurement and description of forests.",
     icon: "trees",
     skills: [
-      { name: "Forest measurements and sample plot establishment", level: "Proficient" },
-      { name: "Biomass and carbon stock data collection", level: "Proficient" },
-      { name: "Tree height–diameter relationships", level: "Proficient" },
+      { name: "Forest measurements and sample plot establishment", level: "Established" },
+      { name: "Biomass and carbon stock data collection", level: "Established" },
+      { name: "Tree height–diameter relationships", level: "Established" },
+      { name: "Field instruments", level: "Established", note: "Hypsometer (incl. ultrasonic), clinometer, Haga altimeter, increment borer" },
       { name: "Forest structure assessment", level: "Working knowledge" },
-      { name: "Field instruments", level: "Proficient", note: "hypsometer incl. ultrasonic, clinometer, Haga altimeter, increment borer" },
       { name: "Socio-economic and baseline surveys", level: "Working knowledge" },
     ],
   },
   {
     title: "Geospatial technologies",
-    description: "Handling and analysing spatial data.",
+    description: "Handling spatial data in the field and on the desktop.",
     icon: "map",
     skills: [
-      { name: "GPS navigation and area measurement", level: "Proficient" },
-      { name: "GIS (QGIS)", level: "Foundational" },
-      { name: "PostGIS", level: "Foundational" },
-      { name: "Remote sensing", level: "Foundational", note: "Actively developing" },
+      { name: "GPS navigation and area measurement", level: "Established" },
+      { name: "GIS (QGIS)", level: "Developing", note: "Basic use; QGIS training completed" },
+      { name: "PostGIS", level: "Developing", note: "Basic" },
+      { name: "Remote sensing", level: "Developing", note: "Currently learning" },
     ],
   },
   {
@@ -53,10 +53,10 @@ export const skillGroups: SkillGroup[] = [
     description: "Turning raw data into reliable, interpretable results.",
     icon: "database",
     skills: [
-      { name: "Data cleaning and preparation", level: "Proficient" },
+      { name: "Data cleaning and preparation", level: "Established" },
+      { name: "MS Excel", level: "Established" },
       { name: "Data visualisation", level: "Working knowledge" },
       { name: "Statistical interpretation", level: "Working knowledge" },
-      { name: "MS Excel", level: "Proficient" },
     ],
   },
   {
@@ -64,8 +64,8 @@ export const skillGroups: SkillGroup[] = [
     description: "Scripting for reproducible analysis.",
     icon: "code",
     skills: [
-      { name: "R", level: "Proficient" },
-      { name: "Python", level: "Beginner", note: "Currently learning" },
+      { name: "R", level: "Established" },
+      { name: "Python", level: "Developing", note: "Beginner level, currently learning" },
     ],
   },
 ];

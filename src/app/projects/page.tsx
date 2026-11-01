@@ -28,7 +28,7 @@ export default function ProjectsPage() {
             {projects.map((p, i) => (
               <li key={p.id}>
                 <a href={`#${p.id}`} className="group flex gap-3 py-1 text-ink-muted hover:text-forest-900">
-                  <span className="font-serif text-sage-500">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-serif text-sage-600">{String(i + 1).padStart(2, "0")}</span>
                   <span className="group-hover:underline group-hover:decoration-sage-400 group-hover:underline-offset-4">{p.shortTitle}</span>
                 </a>
               </li>

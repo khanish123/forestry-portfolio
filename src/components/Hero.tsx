@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { education } from "@/content/education";
 import { displayName, heroFacts, profile } from "@/content/profile";
 import { themeSwitcherEnabled, type HeroLayout } from "@/content/theme";
@@ -17,9 +17,16 @@ function Actions({ tone = "dark", center = false }: { tone?: "dark" | "light"; c
       <div className={`mt-9 flex animate-fade-up flex-wrap items-center gap-3 [animation-delay:240ms] ${center ? "justify-center" : ""}`}>
         <CvButton className="px-6 py-3" variant={tone === "light" ? "light" : "primary"} />
         <ButtonLink
-          href="/contact"
+          href="/publications"
           variant="secondary"
           className={`px-6 py-3 ${tone === "light" ? "border-paper/40 text-paper hover:border-paper/80 hover:bg-forest-800" : ""}`}
+        >
+          <BookOpen size={16} aria-hidden /> Publications
+        </ButtonLink>
+        <ButtonLink
+          href="/contact"
+          variant="ghost"
+          className={`px-2 py-3 ${tone === "light" ? "text-paper hover:text-sage-200" : ""}`}
         >
           Research collaboration <ArrowRight size={16} aria-hidden />
         </ButtonLink>
@@ -35,7 +42,7 @@ function QuickFacts() {
   const countries = Array.from(new Set(education.map((e) => e.country)));
   const items = [
     { label: "Education", value: `${education.length} degrees across ${countries.join(", ").replace(/, ([^,]*)$/, " & $1")}` },
-    { label: "Research focus", value: "Forest structure, tree growth & plantation performance" },
+    { label: "Research focus", value: "Height–diameter modelling, forest biomass & restoration" },
     { label: "Core methods", value: "Field inventory & statistical modelling in R" },
   ];
   return (
@@ -52,12 +59,18 @@ function QuickFacts() {
   );
 }
 
-function RoleLine({ className = "" }: { className?: string }) {
+/** Professional headline plus role and latest degree. */
+function RoleLine({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
   return (
-    <p className={`mt-5 animate-fade-up font-serif text-xl text-forest-700 italic md:text-2xl [animation-delay:120ms] ${className}`}>
-      {profile.role}
-      {profile.affiliation && <span className="text-ink-muted not-italic"> · {profile.affiliation}</span>}
-    </p>
+    <div className={`animate-fade-up [animation-delay:120ms] ${className}`}>
+      <p className={`mt-5 max-w-2xl font-serif text-xl leading-snug md:text-[1.6rem] ${tone === "light" ? "text-sage-100" : "text-forest-700"}`}>
+        {profile.headline}
+      </p>
+      <p className={`mt-3 text-sm ${tone === "light" ? "text-sage-300" : "text-ink-muted"}`}>
+        {profile.role}
+        {profile.affiliation && <> · {profile.affiliation}</>}
+      </p>
+    </div>
   );
 }
 
@@ -98,10 +111,7 @@ function MinimalHero() {
         </h1>
         <div className="mt-12 grid gap-12 border-t border-charcoal/80 pt-10 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
           <div>
-            <p className="animate-fade-up text-xl font-medium text-forest-700 [animation-delay:120ms]">
-              {profile.role}
-              {profile.affiliation && <span className="font-normal text-ink-muted"> — {profile.affiliation}</span>}
-            </p>
+            <RoleLine className="-mt-5" />
             <p className="prose-body mt-5 max-w-xl animate-fade-up [animation-delay:180ms]">{profile.intro}</p>
             <Actions />
           </div>
@@ -174,10 +184,7 @@ function BannerHero() {
             <h1 className="mt-5 animate-fade-up text-[2.75rem] leading-[1.05] font-medium tracking-tight text-paper sm:text-6xl lg:text-[4.25rem] [animation-delay:60ms]">
               {displayName}
             </h1>
-            <p className="mt-5 animate-fade-up font-serif text-xl text-sage-200 italic md:text-2xl [animation-delay:120ms]">
-              {profile.role}
-              {profile.affiliation && <span className="text-sage-300 not-italic"> · {profile.affiliation}</span>}
-            </p>
+            <RoleLine tone="light" />
             <p className="mt-6 max-w-xl animate-fade-up text-[1.0625rem] leading-[1.75] text-sage-100 [animation-delay:180ms]">{profile.intro}</p>
             <Actions tone="light" />
           </div>

@@ -19,18 +19,35 @@ export const metadata: Metadata = {
 const groupIcons = { chart: BarChart3, trees: Trees, map: Map, database: Database, code: Code };
 const learningIcons = { code: Code, satellite: Satellite, radar: Radar, brain: Brain };
 
-const levelRank: Record<SkillLevel, number> = { Proficient: 4, "Working knowledge": 3, Foundational: 2, Beginner: 1 };
+const tiers: SkillLevel[] = ["Established", "Working knowledge", "Developing"];
 
-function LevelMarker({ level }: { level: SkillLevel }) {
-  const rank = levelRank[level];
+const tierLabel: Record<SkillLevel, string> = {
+  Established: "Established expertise",
+  "Working knowledge": "Working knowledge",
+  Developing: "Developing",
+};
+
+/** Visual badge for a skill tier: solid → tinted → dashed outline. */
+function TierBadge({ level }: { level: SkillLevel }) {
   return (
-    <span className="flex items-center gap-2">
-      <span aria-hidden className="flex gap-1">
-        {[1, 2, 3, 4].map((n) => (
-          <span key={n} className={cn("h-1.5 w-4 rounded-full", n <= rank ? "bg-forest-600" : "bg-sage-200")} />
-        ))}
-      </span>
-      <span className="text-xs font-medium whitespace-nowrap text-ink-muted">{level}</span>
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap",
+        level === "Established" && "bg-forest-800 text-paper",
+        level === "Working knowledge" && "bg-sage-100 text-forest-800 ring-1 ring-sage-300 ring-inset",
+        level === "Developing" && "border border-dashed border-sage-500 text-ink-muted",
+      )}
+    >
+      <span
+        aria-hidden
+        className={cn(
+          "h-1.5 w-1.5 rounded-full",
+          level === "Established" && "bg-paper",
+          level === "Working knowledge" && "bg-forest-600",
+          level === "Developing" && "border border-sage-500",
+        )}
+      />
+      {tierLabel[level]}
     </span>
   );
 }
@@ -40,24 +57,24 @@ export default function SkillsPage() {
     <>
       <PageHeader eyebrow="Technical skills" title="Methods and tools" artwork="contours" seed={61}>
         <p>
-          Skills are grouped by area and self-assessed conservatively. Established expertise is shown separately from
-          skills I am currently learning.
+          Skills are grouped by area and self-assessed conservatively in three tiers: established expertise, working
+          knowledge and developing skills. Areas of active learning are listed separately below.
         </p>
       </PageHeader>
 
       <section aria-labelledby="skills-title" className="container-page py-16 md:py-20">
-        <h2 id="skills-title" className="sr-only">Established skills</h2>
+        <h2 id="skills-title" className="sr-only">Skills by area</h2>
         <div className="mb-10 rounded-xl border border-line bg-surface p-5">
           <p className="flex items-center gap-2 text-sm font-semibold text-charcoal">
-            <Info size={16} className="text-forest-600" aria-hidden /> How to read skill levels
+            <Info size={16} className="text-forest-600" aria-hidden /> How to read the skill tiers
           </p>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="mt-4 grid gap-5 sm:grid-cols-3">
             {skillLevels.map((l) => (
               <div key={l.level}>
                 <dt>
-                  <LevelMarker level={l.level} />
+                  <TierBadge level={l.level} />
                 </dt>
-                <dd className="mt-1.5 text-sm leading-snug text-ink-muted">{l.description}</dd>
+                <dd className="mt-2 text-sm leading-snug text-ink-muted">{l.description}</dd>
               </div>
             ))}
           </dl>
@@ -73,17 +90,26 @@ export default function SkillsPage() {
                 </span>
                 <h3 className="mt-5 text-xl font-medium">{g.title}</h3>
                 <p className="mt-1.5 text-sm text-ink-muted">{g.description}</p>
-                <ul className="mt-6 space-y-3.5 border-t border-line pt-5">
-                  {g.skills.map((s) => (
-                    <li key={s.name} className="flex flex-col gap-1.5">
-                      <span className="text-[0.95rem] text-charcoal">
-                        {s.name}
-                        {s.note && <span className="ml-1.5 text-xs text-ink-muted">({s.note})</span>}
-                      </span>
-                      <LevelMarker level={s.level} />
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-6 space-y-5 border-t border-line pt-5">
+                  {tiers
+                    .filter((t) => g.skills.some((s) => s.level === t))
+                    .map((t) => (
+                      <div key={t}>
+                        <h4 className="sr-only">{tierLabel[t]}</h4>
+                        <TierBadge level={t} />
+                        <ul className="mt-2.5 space-y-2">
+                          {g.skills
+                            .filter((s) => s.level === t)
+                            .map((s) => (
+                              <li key={s.name} className="text-[0.95rem] leading-snug text-charcoal">
+                                {s.name}
+                                {s.note && <span className="mt-0.5 block text-xs leading-snug text-ink-muted">{s.note}</span>}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ))}
+                </div>
               </Reveal>
             );
           })}

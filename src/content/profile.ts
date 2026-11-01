@@ -8,22 +8,24 @@ import type { Profile } from "./types";
 export const profile: Profile = {
   name: "Ishfaq Ahmad Khan",
   role: "Forestry Researcher",
-  affiliation: "MSc Forestry, University of Eastern Finland",
+  /** Main home-page headline (shown under your name). */
+  headline:
+    "Forestry researcher specialising in tree height–diameter modelling, forest biomass and forest restoration",
+  affiliation: "MSc in Forestry, University of Eastern Finland (2026)",
   location: "Joensuu, Finland",
   intro:
     "I am an early-career forestry researcher interested in understanding forest ecosystems through field-based research, statistical modelling, and emerging geospatial technologies. My research focuses on forest structure, tree growth relationships, plantation performance, and sustainable forest management.",
   portrait: null, // optional, e.g. "/images/portrait.jpg" (place the file in /public/images)
-  // Set to "/cv/academic-cv.pdf" once a web-safe CV (no date of birth, home address,
-  // phone number or referee contact details) is placed in /public/cv.
-  // While null, CV buttons are hidden and visitors are invited to request the CV by email.
-  cvPath: null,
+  // Public CV (personal details such as date of birth, phone number, home address
+  // and referee contact details have been removed). Replace the file to update it.
+  cvPath: "/cv/academic-cv.pdf",
   cvLastUpdated: null, // e.g. "October 2026"
   availability:
     "Open to PhD positions, research assistantships, and collaborations in forest ecology, forest modelling, and geospatial forest analysis.",
   links: {
     email: "ishfaqahmad860@gmail.com",
     linkedin: "https://www.linkedin.com/in/ishfaq-ahmad-khan-638a92a1",
-    github: null, // e.g. "https://github.com/your-username"
+    github: "https://github.com/khanish123",
     googleScholar: "https://scholar.google.com/citations?user=k2B3IGgAAAAJ&hl=en",
     orcid: null, // optional, e.g. "https://orcid.org/0000-0000-0000-0000"
   },
@@ -76,8 +78,9 @@ export const siteImages: { homeBand: string | null; homeBandAlt: string } = {
 /** Key facts shown in the home-page profile panel (used when there is no portrait). */
 export const heroFacts: { label: string; value: string }[] = [
   { label: "Based in", value: "Joensuu, Finland" },
-  { label: "Latest degree", value: "MSc Forestry, University of Eastern Finland (2026)" },
-  { label: "Current research", value: "Transferability of tree height–diameter models" },
+  { label: "Latest degree", value: "MSc in Forestry, University of Eastern Finland (completed 2026)" },
+  { label: "MSc thesis", value: "Transferability of tree height–diameter models (NLME, RE-EM tree, GPBoost)" },
+  { label: "Publications", value: "8 peer-reviewed articles on forest biomass, carbon and restoration" },
   { label: "Experience", value: "≈ 4 years of field and research work in Pakistan and Finland" },
 ];
 

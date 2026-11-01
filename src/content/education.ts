@@ -44,8 +44,8 @@ export const education: Education[] = [
     country: "Finland",
     start: null,
     end: "2026",
-    researchArea: "Tree height–diameter model transferability",
-    notes: "Supported by a Finland Scholarship.",
+    researchArea: "Tree height–diameter model transferability (MSc thesis)",
+    notes: "Completed June 2026. Supported by a Finland Scholarship.",
   },
 ];
 
@@ -54,7 +54,7 @@ export const academicJourney = [
   "I trained as a forester at the Pakistan Forest Institute, University of Peshawar, where I completed a BSc in Forestry in 2014 with coursework spanning forest ecology, mensuration, silviculture, forest statistics, forest management, and GIS and remote sensing.",
   "Alongside and after my undergraduate studies, I spent several years in applied forestry at the Pakistan Forest Institute, working on carbon stock assessment, forest inventory and sustainable forest management projects across Khyber Pakhtunkhwa.",
   "I then completed a research-based MSc in Forest Management and Ecosystem Sciences at Universiti Putra Malaysia (2022), focusing on forest restoration and regeneration ecology, with advanced training in statistical methods and research methodology.",
-  "Supported by a Finland Scholarship, I completed an MSc in Forestry at the University of Eastern Finland (2026). My research there focuses on the transferability of tree height–diameter models using parametric and data-driven approaches.",
+  "Supported by a Finland Scholarship, I completed an MSc in Forestry at the University of Eastern Finland (2026). My MSc thesis research examined the transferability of tree height–diameter models, comparing a parametric nonlinear mixed-effects approach (NLME) with data-driven approaches (RE-EM tree and GPBoost).",
 ];
 
 /** Set to true to show a "please confirm" note under the narrative. */

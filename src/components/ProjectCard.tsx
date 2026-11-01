@@ -2,6 +2,7 @@ import { ArrowUpRight, FlaskConical, HelpCircle, MapPin, Wrench } from "lucide-r
 import type { Project } from "@/content/types";
 import { showPlaceholders } from "@/lib/placeholders";
 import { DraftNote, Pending } from "./Pending";
+import { ProjectDetail } from "./ProjectDetail";
 import { Tag } from "./Tag";
 import { Visual } from "./Visual";
 
@@ -119,6 +120,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           )}
         </div>
       </div>
+      <ProjectDetail project={project} />
     </article>
   );
 }

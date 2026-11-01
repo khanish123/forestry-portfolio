@@ -48,13 +48,13 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
 
     const subject =
       kind === "cv"
-        ? `CV request from ${name}${organisation ? ` (${organisation})` : ""}`
+        ? `Full CV request from ${name}${organisation ? ` (${organisation})` : ""}`
         : `Website message: ${topic} — ${name}`;
 
     const fields: Record<string, string> =
       kind === "cv"
         ? {
-            "Request type": "CV request",
+            "Request type": "Full CV with referee details",
             Name: name,
             Email: from,
             Organisation: organisation || "—",
@@ -76,18 +76,18 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
   }
 
   const field =
-    "mt-1.5 block w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-[0.95rem] text-charcoal placeholder:text-sage-500 transition-colors focus:border-forest-600 focus:outline-none focus:ring-2 focus:ring-forest-600/20 aria-[invalid=true]:border-red-700";
+    "mt-1.5 block w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-[0.95rem] text-charcoal placeholder:text-sage-600 transition-colors focus:border-forest-600 focus:outline-none focus:ring-2 focus:ring-forest-600/20 aria-[invalid=true]:border-red-700";
   const label = "text-sm font-medium text-charcoal";
 
   if (status === "sent") {
     return (
       <div role="status" className="rounded-lg border border-sage-300 bg-sage-50 p-6">
         <p className="flex items-center gap-2 font-medium text-forest-800">
-          <CheckCircle2 size={18} aria-hidden /> {kind === "cv" ? "CV request sent" : "Message sent"}
+          <CheckCircle2 size={18} aria-hidden /> {kind === "cv" ? "Full CV request sent" : "Message sent"}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {kind === "cv"
-            ? "Thank you. I will email my CV to the address you provided shortly."
+            ? "Thank you. I will email my full CV, including referee details, to the address you provided shortly."
             : "Thank you for getting in touch. I will reply to your email as soon as possible."}
         </p>
         <button type="button" onClick={() => setStatus("idle")} className="link-underline mt-3 text-sm text-forest-800">
@@ -166,7 +166,7 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <button type="submit" className={buttonClass("primary")} disabled={!endpoint || status === "sending"}>
           {status === "sending" ? <LoaderCircle size={16} className="animate-spin" aria-hidden /> : <Send size={16} aria-hidden />}
-          {status === "sending" ? "Sending…" : kind === "cv" ? "Request CV" : "Send message"}
+          {status === "sending" ? "Sending…" : kind === "cv" ? "Request full CV" : "Send message"}
         </button>
         <div id={id("status")} role="status" aria-live="polite" className="text-sm">
           {!endpoint && (

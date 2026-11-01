@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Code, GraduationCap, Leaf, Radar, Satellite, Brain } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Code, GraduationCap, Leaf, Radar, Satellite, Brain } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { CallToAction } from "@/components/CallToAction";
 import { Hero } from "@/components/Hero";
@@ -12,13 +12,18 @@ import { education } from "@/content/education";
 import { displayName, interestKeywords, profile, site, siteImages } from "@/content/profile";
 import { heroLayout } from "@/content/theme";
 import { projects } from "@/content/projects";
+import { publicationCount, publications } from "@/content/publications";
+import { PublicationItem } from "@/components/PublicationItem";
+import { CvButton } from "@/components/CvButton";
 import { researchAreas } from "@/content/research";
 import { learning } from "@/content/skills";
 
 const learningIcons = { code: Code, satellite: Satellite, radar: Radar, brain: Brain };
 
 export default function HomePage() {
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const highlight = projects.find((p) => p.id === "hd-model-transferability") ?? projects[0];
+  const featured = projects.filter((p) => p.id !== highlight.id).slice(0, 3);
+  const recentPubs = [...publications].sort((a, b) => b.year - a.year).slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -36,6 +41,37 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <Hero layout={heroLayout} />
+
+      {/* ───────────── Featured research ───────────── */}
+      <section aria-labelledby="featured-title" className="container-page py-20 md:py-24">
+        <Reveal className="grid items-center gap-10 overflow-hidden rounded-2xl border border-line bg-surface lg:grid-cols-[1fr_1.15fr] lg:gap-0">
+          <Visual artwork={highlight.artwork} seed={5} className="aspect-[16/10] lg:m-10 lg:mr-0 lg:aspect-[4/3] lg:rounded-lg" />
+          <div className="px-6 pb-8 lg:p-12">
+            <p className="eyebrow">Featured research · MSc thesis</p>
+            <h2 id="featured-title" className="mt-3 text-2xl leading-snug font-medium md:text-3xl">
+              {highlight.title}
+            </h2>
+            <p className="mt-2 text-sm text-ink-muted">{highlight.affiliation?.replace("MSc thesis research · ", "")}</p>
+            <p className="prose-body mt-5">{highlight.summary}</p>
+            {highlight.models && (
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label="Models compared">
+                {highlight.models.map((m) => (
+                  <li key={m.abbr}>
+                    <Tag tone={m.type === "Parametric" ? "dark" : "sage"}>
+                      {m.abbr} <span className="ml-1 font-normal opacity-75">· {m.type.toLowerCase()}</span>
+                    </Tag>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href={`/projects#${highlight.id}`}>
+                Methods, evaluation & figures <ArrowRight size={16} aria-hidden />
+              </ButtonLink>
+            </div>
+          </div>
+        </Reveal>
+      </section>
 
       {/* ───────────── Research interests ───────────── */}
       <section aria-labelledby="interests-title" className="container-page py-20 md:py-28">
@@ -57,7 +93,7 @@ export default function HomePage() {
             <ul className="grid gap-x-10 sm:grid-cols-2">
               {interestKeywords.map((k, i) => (
                 <li key={k} className="flex items-start gap-3 border-b border-line py-4">
-                  <span className="mt-0.5 font-serif text-sm text-sage-500 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="mt-0.5 font-serif text-sm text-sage-600 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                   <span className="text-[1rem] leading-snug text-charcoal">{k}</span>
                 </li>
               ))}
@@ -89,7 +125,7 @@ export default function HomePage() {
                   <div className="p-6">
                     <h3 className="flex items-start justify-between gap-3 text-xl leading-snug font-medium group-hover:text-forest-800">
                       {area.title}
-                      <ArrowUpRight size={18} aria-hidden className="mt-1 shrink-0 text-sage-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-forest-700" />
+                      <ArrowUpRight size={18} aria-hidden className="mt-1 shrink-0 text-sage-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-forest-700" />
                     </h3>
                     <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-muted">{area.short}</p>
                   </div>
@@ -141,7 +177,7 @@ export default function HomePage() {
 
       {/* ───────────── Selected projects ───────────── */}
       <section aria-labelledby="projects-title" className="container-page py-20 md:py-28">
-        <SectionHeading eyebrow="Research projects" title="Selected projects" id="projects-title"
+        <SectionHeading eyebrow="Research projects" title="More research projects" id="projects-title"
           action={
             <ButtonLink href="/projects" variant="secondary">
               All projects <ArrowRight size={16} aria-hidden />
@@ -172,6 +208,29 @@ export default function HomePage() {
               </article>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* ───────────── Recent publications ───────────── */}
+      <section aria-labelledby="pubs-title" className="border-t border-line bg-sage-50 py-20 md:py-24">
+        <div className="container-page">
+          <SectionHeading eyebrow="Publications" title="Recent peer-reviewed articles" id="pubs-title"
+            action={
+              <div className="flex flex-wrap gap-3">
+                <ButtonLink href="/publications" variant="secondary">
+                  <BookOpen size={16} aria-hidden /> All {publicationCount} publications
+                </ButtonLink>
+                <CvButton variant="secondary" />
+              </div>
+            }
+          />
+          <ol className="divide-y divide-line border-y border-line">
+            {recentPubs.map((p) => (
+              <Reveal as="li" key={p.title} className="py-6">
+                <PublicationItem p={p} />
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 

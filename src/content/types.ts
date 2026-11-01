@@ -23,6 +23,8 @@ export interface Profile {
   name: Maybe;
   /** Short line shown under the name, e.g. "Forestry Researcher". */
   role: string;
+  /** Main home-page headline. */
+  headline: string;
   /** Optional affiliation line, e.g. current institution. */
   affiliation: Maybe;
   location: Maybe;
@@ -63,6 +65,8 @@ export interface Experience {
   start: Maybe;
   end: Maybe;
   category: "Research" | "Field research" | "Forest inventory" | "Consultancy" | "Internship" | "Development sector";
+  /** Nature of the engagement, shown as a labelled badge on the Experience page. */
+  engagement: "Employment" | "Research traineeship" | "Voluntary research assistance" | "Internship";
   /** Project the role was part of. */
   project?: string;
   summary: Maybe;
@@ -113,22 +117,41 @@ export interface Project {
   artwork: ArtworkKind;
   draft: boolean;
   featured?: boolean;
+  /** Optional extended detail (used for the flagship MSc project). */
+  models?: { name: string; abbr: string; type: "Parametric" | "Data-driven"; description: string }[];
+  evaluation?: {
+    metrics: { name: string; purpose: string }[];
+    transferability: string[];
+  };
+  /** Figure slots. Without `image` a captioned placeholder frame is shown. */
+  figures?: { title: string; caption: string; image?: string | null; alt?: string }[];
+  /** Code repository. `url: null` shows a "link to be added" placeholder. */
+  repository?: { url: string | null; label: string };
+  /** Statement about data and document availability. */
+  dataNote?: string;
 }
 
 export interface Publication {
   title: string;
-  /** Full author list exactly as published. */
+  /** Author list as published. Your own name is highlighted automatically. */
   authors: string;
+  /** false → the author list above is shortened; full list to be confirmed. */
+  authorsComplete?: boolean;
   year: number;
   journal: string;
   volume?: string;
+  issue?: string;
   pages?: string;
-  doi?: string;
+  /** DOI without the https://doi.org/ prefix. `null` → shown as "to be confirmed". */
+  doi?: string | null;
+  /** Link to the article page (used when there is no DOI). */
   url?: string;
-  type?: "Journal article" | "Conference paper" | "Book chapter" | "Thesis" | "Preprint" | "Report";
+  type?: "Research article" | "Review article" | "Conference paper" | "Book chapter" | "Thesis" | "Preprint" | "Report";
+  /** Short public note, e.g. online publication date. */
+  note?: string;
 }
 
-export type SkillLevel = "Proficient" | "Working knowledge" | "Foundational" | "Beginner";
+export type SkillLevel = "Established" | "Working knowledge" | "Developing";
 
 export interface SkillGroup {
   title: string;

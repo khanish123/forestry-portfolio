@@ -60,24 +60,27 @@ export default function ContactPage() {
           <div id="cv" className="scroll-mt-24 rounded-xl bg-forest-900 p-7 text-paper">
             <FileText size={24} aria-hidden className="text-sage-300" />
             <h2 className="mt-4 text-2xl font-medium text-paper">Academic CV</h2>
-            {profile.cvPath ? (
-              <>
-                <p className="mt-2 text-sm leading-relaxed text-sage-200">
-                  Full details of education, research experience, skills and outputs.
+            <p className="mt-2 text-sm leading-relaxed text-sage-200">
+              Education, research and professional experience, skills, training, awards and publications.
+            </p>
+            {profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>}
+            <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
+            <p className="mt-3 text-xs leading-relaxed text-sage-300">
+              The public version omits personal details and referee contact information.
+            </p>
+            <details className="group mt-6 rounded-lg bg-surface text-ink">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-5 py-4 text-sm font-medium text-charcoal hover:bg-sage-50">
+                Request the full CV with referee details
+                <span aria-hidden className="text-lg leading-none text-forest-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="border-t border-line p-5">
+                <p className="mb-5 text-sm leading-relaxed text-ink-muted">
+                  For admission committees and recruiters: leave your details and I will email you my full CV, including
+                  referee contact information.
                 </p>
-                {profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>}
-                <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
-              </>
-            ) : (
-              <>
-                <p className="mt-2 text-sm leading-relaxed text-sage-200">
-                  My full CV is available on request. Leave your details and I will email it to you.
-                </p>
-                <div className="mt-6 rounded-lg bg-surface p-5">
-                  <ContactForm email={links.email} kind="cv" compact />
-                </div>
-              </>
-            )}
+                <ContactForm email={links.email} kind="cv" compact />
+              </div>
+            </details>
           </div>
 
           <div>
