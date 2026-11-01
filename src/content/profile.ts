@@ -83,7 +83,7 @@ export const profilePanelPhoto = {
   src: "/images/fieldwork-map.jpg",
   width: 1600,
   height: 1060,
-  alt: "Forester in a striped shirt and camouflage hat pointing at a Malkandi Reserve Forest compartment map spread out among ferns during fieldwork",
+  alt: "Ishfaq Ahmad Khan reading a Malkandi Reserve Forest compartment map among ferns during fieldwork",
   position: "50% 45%",
 };
 
