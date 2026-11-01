@@ -16,9 +16,9 @@ export const profile: Profile = {
   intro:
     "I am an early-career forestry researcher interested in understanding forest ecosystems through field-based research, statistical modelling, and emerging geospatial technologies. My research focuses on forest structure, tree growth relationships, plantation performance, and sustainable forest management.",
   portrait: null, // optional, e.g. "/images/portrait.jpg" (place the file in /public/images)
-  // Public CV (personal details such as date of birth, phone number, home address
-  // and referee contact details have been removed). Replace the file to update it.
-  cvPath: "/cv/academic-cv.pdf",
+  // The CV is NOT publicly downloadable. While null, every CV button links to the
+  // CV request form on the Contact page, which emails the request to you.
+  cvPath: null,
   cvLastUpdated: null, // e.g. "October 2026"
   availability:
     "Open to PhD positions, research assistantships, and collaborations in forest ecology, forest modelling, and geospatial forest analysis.",
@@ -73,6 +73,18 @@ export const nameIsPlaceholder = profile.name === null;
 export const siteImages: { homeBand: string | null; homeBandAlt: string } = {
   homeBand: null, // e.g. "/images/forest-canopy.jpg"
   homeBandAlt: "", // e.g. "Mixed boreal forest canopy in eastern Finland"
+};
+
+/**
+ * Fieldwork photograph at the top of the home-page profile panel.
+ * `position` is the CSS object-position used when the photo is cropped to 16:9.
+ */
+export const profilePanelPhoto = {
+  src: "/images/fieldwork-map.jpg",
+  width: 1600,
+  height: 1060,
+  alt: "Forester in a striped shirt and camouflage hat pointing at a Malkandi Reserve Forest compartment map spread out among ferns during fieldwork",
+  position: "50% 45%",
 };
 
 /** Key facts shown in the home-page profile panel (used when there is no portrait). */

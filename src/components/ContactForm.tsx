@@ -5,6 +5,7 @@ import { CheckCircle2, CircleAlert, LoaderCircle, Send } from "lucide-react";
 import { formEndpoint, sendForm } from "@/lib/sendForm";
 import { cn } from "@/lib/utils";
 import { buttonClass } from "./Button";
+import { EmailIconLink } from "./EmailIconLink";
 
 type Status = "idle" | "sending" | "sent" | "error";
 type Kind = "message" | "cv";
@@ -48,13 +49,13 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
 
     const subject =
       kind === "cv"
-        ? `Full CV request from ${name}${organisation ? ` (${organisation})` : ""}`
+        ? `CV request from ${name}${organisation ? ` (${organisation})` : ""}`
         : `Website message: ${topic} — ${name}`;
 
     const fields: Record<string, string> =
       kind === "cv"
         ? {
-            "Request type": "Full CV with referee details",
+            "Request type": "CV request",
             Name: name,
             Email: from,
             Organisation: organisation || "—",
@@ -83,11 +84,11 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
     return (
       <div role="status" className="rounded-lg border border-sage-300 bg-sage-50 p-6">
         <p className="flex items-center gap-2 font-medium text-forest-800">
-          <CheckCircle2 size={18} aria-hidden /> {kind === "cv" ? "Full CV request sent" : "Message sent"}
+          <CheckCircle2 size={18} aria-hidden /> {kind === "cv" ? "CV request sent" : "Message sent"}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {kind === "cv"
-            ? "Thank you. I will email my full CV, including referee details, to the address you provided shortly."
+            ? "Thank you. I will email my CV to the address you provided shortly."
             : "Thank you for getting in touch. I will reply to your email as soon as possible."}
         </p>
         <button type="button" onClick={() => setStatus("idle")} className="link-underline mt-3 text-sm text-forest-800">
@@ -166,7 +167,7 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <button type="submit" className={buttonClass("primary")} disabled={!endpoint || status === "sending"}>
           {status === "sending" ? <LoaderCircle size={16} className="animate-spin" aria-hidden /> : <Send size={16} aria-hidden />}
-          {status === "sending" ? "Sending…" : kind === "cv" ? "Request full CV" : "Send message"}
+          {status === "sending" ? "Sending…" : kind === "cv" ? "Request CV" : "Send message"}
         </button>
         <div id={id("status")} role="status" aria-live="polite" className="text-sm">
           {!endpoint && (
@@ -181,11 +182,8 @@ export function ContactForm({ email, kind = "message", compact = false }: { emai
                 Sorry, the message could not be sent.
                 {email && (
                   <>
-                    {" "}Please email{" "}
-                    <a href={`mailto:${email}`} className="underline">
-                      {email}
-                    </a>{" "}
-                    directly.
+                    {" "}Please email me directly{" "}
+                    <EmailIconLink email={email} size="sm" className="ml-1" />
                   </>
                 )}
               </span>

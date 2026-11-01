@@ -85,6 +85,8 @@ export function Header({ name, cvPath }: { name: string; cvPath: string | null }
           ) : (
             <Link
               href="/contact#cv"
+              aria-label="Request CV"
+              title="Request my CV"
               className="hidden items-center gap-1.5 rounded-md border border-forest-800/25 px-3 py-1.5 text-sm font-medium text-forest-900 transition-colors hover:border-forest-800/60 hover:bg-sage-50 sm:inline-flex"
             >
               CV

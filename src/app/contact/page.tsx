@@ -60,33 +60,48 @@ export default function ContactPage() {
           <div id="cv" className="scroll-mt-24 rounded-xl bg-forest-900 p-7 text-paper">
             <FileText size={24} aria-hidden className="text-sage-300" />
             <h2 className="mt-4 text-2xl font-medium text-paper">Academic CV</h2>
-            <p className="mt-2 text-sm leading-relaxed text-sage-200">
-              Education, research and professional experience, skills, training, awards and publications.
-            </p>
-            {profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>}
-            <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
-            <p className="mt-3 text-xs leading-relaxed text-sage-300">
-              The public version omits personal details and referee contact information.
-            </p>
-            <details className="group mt-6 rounded-lg bg-surface text-ink">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-5 py-4 text-sm font-medium text-charcoal hover:bg-sage-50">
-                Request the full CV with referee details
-                <span aria-hidden className="text-lg leading-none text-forest-700 transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <div className="border-t border-line p-5">
-                <p className="mb-5 text-sm leading-relaxed text-ink-muted">
-                  For admission committees and recruiters: leave your details and I will email you my full CV, including
-                  referee contact information.
+            {profile.cvPath ? (
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-sage-200">
+                  Education, research and professional experience, skills, training, awards and publications.
                 </p>
-                <ContactForm email={links.email} kind="cv" compact />
-              </div>
-            </details>
+                {profile.cvLastUpdated && <p className="mt-2 text-xs text-sage-300">Last updated: {profile.cvLastUpdated}</p>}
+                <CvButton variant="light" className="mt-6" label="Download CV (PDF)" />
+              </>
+            ) : (
+              <>
+                <p className="mt-2 text-sm leading-relaxed text-sage-200">
+                  My full academic CV is available on request. Leave your details and I will email it to you.
+                </p>
+                <div className="mt-6 rounded-lg bg-surface p-5 text-ink">
+                  <ContactForm email={links.email} kind="cv" compact />
+                </div>
+              </>
+            )}
           </div>
 
           <div>
             <h2 className="text-2xl font-medium">Contact details</h2>
             <ul className="mt-3 divide-y divide-line border-y border-line">
-              <Row icon={<Mail size={18} aria-hidden />} label="Email" value={links.email} href={links.email ? `mailto:${links.email}` : null} />
+              {links.email && (
+                <li className="py-4">
+                  <a
+                    href={`mailto:${links.email}`}
+                    title="Send me an email"
+                    className="group flex items-center gap-4"
+                  >
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sage-100 text-forest-700 transition-colors duration-200 group-hover:bg-forest-800 group-hover:text-paper">
+                      <Mail size={18} aria-hidden />
+                    </span>
+                    <span className="min-w-0">
+                      <span aria-hidden className="block text-sm text-ink-muted">Email</span>
+                      <span className="text-charcoal underline decoration-sage-400 decoration-1 underline-offset-4 transition-colors group-hover:text-forest-800 group-hover:decoration-forest-700">
+                        Send me an email
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              )}
               <Row icon={<LinkedInIcon />} label="LinkedIn" value={pretty(links.linkedin)} href={links.linkedin} />
               <Row icon={<GitHubIcon />} label="GitHub" value={pretty(links.github)} href={links.github} />
               <Row icon={<GraduationCap size={18} aria-hidden />} label="Google Scholar" value={links.googleScholar ? "Google Scholar profile" : null} href={links.googleScholar} />

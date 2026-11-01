@@ -33,8 +33,8 @@ export const skillGroups: SkillGroup[] = [
       { name: "Biomass and carbon stock data collection", level: "Established" },
       { name: "Tree height–diameter relationships", level: "Established" },
       { name: "Field instruments", level: "Established", note: "Hypsometer (incl. ultrasonic), clinometer, Haga altimeter, increment borer" },
-      { name: "Forest structure assessment", level: "Working knowledge" },
-      { name: "Socio-economic and baseline surveys", level: "Working knowledge" },
+      { name: "Forest structure assessment", level: "Established" },
+      { name: "Socio-economic and baseline surveys", level: "Established" },
     ],
   },
   {

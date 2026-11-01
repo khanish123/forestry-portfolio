@@ -10,7 +10,7 @@ type Item = { key: string; label: string; href: string | null | undefined; icon:
 export function socialItems(): Item[] {
   const { links } = profile;
   return [
-    { key: "email", label: "Email", href: links.email ? `mailto:${links.email}` : null, icon: <Mail size={18} aria-hidden />, display: links.email ?? undefined },
+    { key: "email", label: "Send me an email", href: links.email ? `mailto:${links.email}` : null, icon: <Mail size={18} aria-hidden /> },
     { key: "linkedin", label: "LinkedIn", href: links.linkedin, icon: <LinkedInIcon /> },
     { key: "github", label: "GitHub", href: links.github, icon: <GitHubIcon /> },
     { key: "scholar", label: "Google Scholar", href: links.googleScholar, icon: <GraduationCap size={18} aria-hidden /> },
