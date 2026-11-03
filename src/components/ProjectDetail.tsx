@@ -108,7 +108,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                     alt={f.alt ?? f.title}
                     width={f.width ?? 1200}
                     height={f.height ?? 900}
-                    label={f.label ? `${f.label}: ${f.title}` : f.title}
+                    label={f.label ? `${f.label}. ${f.title}` : f.title}
                   />
                 ) : (
                   <div className="grid aspect-[4/3] place-items-center border-b border-dashed border-sage-300 bg-sage-50 text-center">
@@ -119,8 +119,11 @@ export function ProjectDetail({ project }: { project: Project }) {
                   </div>
                 )}
                 <figcaption className="p-4">
-                  {f.label && <p className="text-xs font-semibold tracking-[0.12em] text-sage-600 uppercase">{f.label}</p>}
-                  <p className="mt-1 text-[0.95rem] leading-snug font-medium text-charcoal">{f.title}</p>
+                  <p className="text-[0.95rem] leading-snug text-charcoal">
+                    {f.label && <span className="font-semibold">{f.label}. </span>}
+                    <span className="font-medium">{f.title}</span>
+                    {f.source && <span className="text-ink-muted"> ({f.source}).</span>}
+                  </p>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{f.caption}</p>
                 </figcaption>
               </figure>

@@ -76,7 +76,8 @@ export const projects: Project[] = [
     // Original MSc thesis figures (files in /public/images/thesis, unaltered).
     figures: [
       {
-        label: "Figure 3.7 · NLME",
+        label: "Figure 1",
+        source: "originally Figure 3.7 in the thesis",
         title: "NLME predictions after plot-level calibration",
         caption: "Calibrated NLME predictions using k = 3 calibration trees per plot.",
         image: "/images/thesis/fig-3-7-nlme-calibrated.png",
@@ -85,7 +86,8 @@ export const projects: Project[] = [
         alt: "Scatter plot of predicted tree height (m) against observed tree height (m) for calibrated NLME predictions, with a dashed 1:1 reference line.",
       },
       {
-        label: "Figure 3.11 · RE-EM tree",
+        label: "Figure 2",
+        source: "originally Figure 3.11 in the thesis",
         title: "RE-EM tree predictions after plot-level calibration",
         caption: "Calibrated RE-EM tree predictions using k = 3 calibration trees per plot.",
         image: "/images/thesis/fig-3-11-reemtree-calibrated.png",
@@ -94,7 +96,8 @@ export const projects: Project[] = [
         alt: "Scatter plot of predicted tree height (m) against observed tree height (m) for calibrated RE-EM tree predictions, with a dashed 1:1 reference line.",
       },
       {
-        label: "Figure 3.13 · GPBoost",
+        label: "Figure 3",
+        source: "originally Figure 3.13 in the thesis",
         title: "GPBoost predictions on an independent dataset",
         caption: "Generic GPBoost predictions on the independent dataset before calibration.",
         image: "/images/thesis/fig-3-13-gpboost-independent.png",
@@ -103,7 +106,7 @@ export const projects: Project[] = [
         alt: "Scatter plot of predicted tree height (m) against observed tree height (m) for generic GPBoost predictions on the independent dataset before calibration, with a solid reference line.",
       },
     ],
-    repository: { url: null, label: "Analysis code on GitHub" },
+    repository: { url: "https://github.com/khanish123/Tree-height-diameter-model-transferability-Thesis", label: "Analysis code on GitHub" },
     dataNote:
       "The tree measurement data used in this project are subject to data-use restrictions and are not published on this website. The MSc thesis document is likewise not distributed here.",
   },

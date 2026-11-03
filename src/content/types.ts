@@ -130,6 +130,8 @@ export interface Project {
    */
   figures?: {
     label?: string;
+    /** Reference to the original numbering, e.g. "originally Figure 3.7 in the thesis". */
+    source?: string;
     title: string;
     caption: string;
     image?: string | null;
