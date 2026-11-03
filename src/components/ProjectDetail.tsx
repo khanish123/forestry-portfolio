@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { BarChart3, Database, GitBranch, ImageIcon, Layers, Repeat } from "lucide-react";
 import type { Project } from "@/content/types";
-import { cn, withBase } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { GitHubIcon } from "./BrandIcons";
+import { FigureLightbox } from "./FigureLightbox";
 
 function SectionTitle({ icon: Icon, children }: { icon: typeof Layers; children: React.ReactNode }) {
   return (
@@ -99,13 +99,17 @@ export function ProjectDetail({ project }: { project: Project }) {
           <SectionTitle icon={ImageIcon}>
             <span id={`${project.id}-figures`}>Selected figures</span>
           </SectionTitle>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {figures.map((f) => (
-              <figure key={f.title} className="overflow-hidden rounded-lg border border-line bg-surface">
+              <figure key={f.title} className="flex flex-col overflow-hidden rounded-lg border border-line bg-surface">
                 {f.image ? (
-                  <div className="relative aspect-[4/3]">
-                    <Image src={withBase(f.image)} alt={f.alt ?? f.caption} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-contain" />
-                  </div>
+                  <FigureLightbox
+                    src={f.image}
+                    alt={f.alt ?? f.title}
+                    width={f.width ?? 1200}
+                    height={f.height ?? 900}
+                    label={f.label ? `${f.label}: ${f.title}` : f.title}
+                  />
                 ) : (
                   <div className="grid aspect-[4/3] place-items-center border-b border-dashed border-sage-300 bg-sage-50 text-center">
                     <div className="px-4">
@@ -114,8 +118,10 @@ export function ProjectDetail({ project }: { project: Project }) {
                     </div>
                   </div>
                 )}
-                <figcaption className="p-4 text-sm leading-snug text-ink-muted">
-                  <span className="font-semibold text-charcoal">{f.title}.</span> {f.caption}
+                <figcaption className="p-4">
+                  {f.label && <p className="text-xs font-semibold tracking-[0.12em] text-sage-600 uppercase">{f.label}</p>}
+                  <p className="mt-1 text-[0.95rem] leading-snug font-medium text-charcoal">{f.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{f.caption}</p>
                 </figcaption>
               </figure>
             ))}

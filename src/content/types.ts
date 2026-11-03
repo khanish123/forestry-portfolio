@@ -123,8 +123,20 @@ export interface Project {
     metrics: { name: string; purpose: string }[];
     transferability: string[];
   };
-  /** Figure slots. Without `image` a captioned placeholder frame is shown. */
-  figures?: { title: string; caption: string; image?: string | null; alt?: string }[];
+  /**
+   * Figures. `label` is shown above the title (e.g. thesis figure number);
+   * `width`/`height` are the image's pixel size (used for the enlarged view).
+   * Without `image` a captioned placeholder frame is shown.
+   */
+  figures?: {
+    label?: string;
+    title: string;
+    caption: string;
+    image?: string | null;
+    width?: number;
+    height?: number;
+    alt?: string;
+  }[];
   /** Code repository. `url: null` shows a "link to be added" placeholder. */
   repository?: { url: string | null; label: string };
   /** Statement about data and document availability. */

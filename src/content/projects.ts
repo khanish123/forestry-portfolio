@@ -73,10 +73,35 @@ export const projects: Project[] = [
         "Predictive accuracy on the independent data is compared between the parametric (NLME) and data-driven (RE-EM tree, GPBoost) approaches.",
       ],
     },
+    // Original MSc thesis figures (files in /public/images/thesis, unaltered).
     figures: [
-      { title: "Figure 1", caption: "Height–diameter curves predicted by NLME, RE-EM tree and GPBoost", image: null },
-      { title: "Figure 2", caption: "Prediction accuracy (RMSE and bias) on independent validation data", image: null },
-      { title: "Figure 3", caption: "Residuals of predicted tree height against diameter, by model", image: null },
+      {
+        label: "Figure 3.7 · NLME",
+        title: "NLME predictions after plot-level calibration",
+        caption: "Calibrated NLME predictions using k = 3 calibration trees per plot.",
+        image: "/images/thesis/fig-3-7-nlme-calibrated.png",
+        width: 750,
+        height: 729,
+        alt: "Scatter plot of predicted tree height (m) against observed tree height (m) for calibrated NLME predictions, with a dashed 1:1 reference line.",
+      },
+      {
+        label: "Figure 3.11 · RE-EM tree",
+        title: "RE-EM tree predictions after plot-level calibration",
+        caption: "Calibrated RE-EM tree predictions using k = 3 calibration trees per plot.",
+        image: "/images/thesis/fig-3-11-reemtree-calibrated.png",
+        width: 750,
+        height: 750,
+        alt: "Scatter plot of predicted tree height (m) against observed tree height (m) for calibrated RE-EM tree predictions, with a dashed 1:1 reference line.",
+      },
+      {
+        label: "Figure 3.13 · GPBoost",
+        title: "GPBoost predictions on an independent dataset",
+        caption: "Generic GPBoost predictions on the independent dataset before calibration.",
+        image: "/images/thesis/fig-3-13-gpboost-independent.png",
+        width: 1033,
+        height: 699,
+        alt: "Scatter plot of predicted tree height (m) against observed tree height (m) for generic GPBoost predictions on the independent dataset before calibration, with a solid reference line.",
+      },
     ],
     repository: { url: null, label: "Analysis code on GitHub" },
     dataNote:
