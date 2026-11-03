@@ -56,6 +56,10 @@ export interface Education {
   supervisor?: string;
   subjects?: string[];
   notes?: string;
+  /** Homepage card only: institution name to show instead of `institution`. */
+  displayInstitution?: string;
+  /** Homepage card only: secondary line under the institution name. */
+  affiliatedWith?: string;
   /** Institution logo in /public (shown on the homepage education cards). */
   logo?: { src: string; alt: string; width: number; height: number };
 }

@@ -185,7 +185,10 @@ export default function HomePage() {
                     <Image src={withBase(e.logo.src)} alt={e.logo.alt} fill sizes="44px" className="object-contain" />
                   </span>
                 )}
-                <p className="text-[0.95rem] leading-snug text-ink-muted">{e.institution}</p>
+                <div>
+                  <p className="text-[0.95rem] leading-snug text-ink-muted">{e.displayInstitution ?? e.institution}</p>
+                  {e.affiliatedWith && <p className="mt-0.5 text-xs leading-snug text-ink-muted">{e.affiliatedWith}</p>}
+                </div>
               </div>
               {e.researchArea && <p className="mt-3 text-sm leading-snug text-forest-700">{e.researchArea}</p>}
               <p className="mt-auto pt-4 text-sm text-ink-muted">

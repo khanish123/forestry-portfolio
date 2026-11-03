@@ -11,6 +11,8 @@ export const education: Education[] = [
     institution: "University of Peshawar",
     department: "Pakistan Forest Institute, Peshawar",
     country: "Pakistan",
+    displayInstitution: "Pakistan Forest Institute (PFI), Peshawar",
+    affiliatedWith: "Affiliated with the University of Peshawar",
     logo: { src: "/images/logos/pakistan-forest-institute.png", alt: "Pakistan Forest Institute, Peshawar logo", width: 393, height: 400 },
     start: null,
     end: "2014",
