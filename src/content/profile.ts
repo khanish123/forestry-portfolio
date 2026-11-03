@@ -88,11 +88,20 @@ export const profilePanelPhoto = {
 };
 
 /** Key facts shown in the home-page profile panel (used when there is no portrait). */
-export const heroFacts: { label: string; value: string }[] = [
+export const heroFacts: { label: string; value: string; tags?: string[] }[] = [
   { label: "Based in", value: "Joensuu, Finland" },
   { label: "Latest degree", value: "MSc in Forestry, University of Eastern Finland (completed 2026)" },
   { label: "MSc thesis", value: "Transferability of tree height–diameter models (NLME, RE-EM tree, GPBoost)" },
-  { label: "Publications", value: "8 peer-reviewed articles on forest biomass, carbon and restoration" },
+  {
+    label: "Research areas",
+    value: "Forest Structure and Dynamics · Forest Biomass and Carbon · Forest Regeneration and Plantation Ecology · Forest Inventory and Modelling",
+    tags: [
+      "Forest Structure and Dynamics",
+      "Forest Biomass and Carbon",
+      "Forest Regeneration and Plantation Ecology",
+      "Forest Inventory and Modelling",
+    ],
+  },
   { label: "Experience", value: "≈ 4 years of field and research work in Pakistan and Finland" },
 ];
 

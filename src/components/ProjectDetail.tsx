@@ -87,9 +87,6 @@ export function ProjectDetail({ project }: { project: Project }) {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 rounded-md border border-line bg-surface px-4 py-3 text-sm text-ink-muted">
-              A summary of results will be added here.
-            </p>
           </section>
         </div>
       )}

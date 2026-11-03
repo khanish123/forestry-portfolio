@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { heroFacts, profilePanelPhoto } from "@/content/profile";
 import { withBase } from "@/lib/utils";
+import { Tag } from "./Tag";
 
 /** Home-page panel: fieldwork photograph and key facts (used when there is no portrait). */
 export function ProfilePanel() {
@@ -23,7 +24,19 @@ export function ProfilePanel() {
           {heroFacts.map((f) => (
             <div key={f.label} className="py-3.5">
               <dt className="text-[0.7rem] font-semibold tracking-[0.14em] text-sage-600 uppercase">{f.label}</dt>
-              <dd className="mt-1 text-[0.95rem] leading-snug text-charcoal">{f.value}</dd>
+              {f.tags ? (
+                <dd className="mt-2">
+                  <ul className="flex flex-wrap gap-1.5">
+                    {f.tags.map((t) => (
+                      <li key={t}>
+                        <Tag>{t}</Tag>
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              ) : (
+                <dd className="mt-1 text-[0.95rem] leading-snug text-charcoal">{f.value}</dd>
+              )}
             </div>
           ))}
         </dl>
