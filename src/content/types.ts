@@ -56,6 +56,8 @@ export interface Education {
   supervisor?: string;
   subjects?: string[];
   notes?: string;
+  /** Institution logo in /public (shown on the homepage education cards). */
+  logo?: { src: string; alt: string; width: number; height: number };
 }
 
 export interface Experience {

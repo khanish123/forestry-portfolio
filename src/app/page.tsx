@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Code, GraduationCap, HandCoins, Leaf, Radar, Satellite, Brain } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
@@ -11,6 +12,7 @@ import { Visual } from "@/components/Visual";
 import { education, homepageAwards } from "@/content/education";
 import { displayName, interestKeywords, profile, site, siteImages } from "@/content/profile";
 import { heroLayout } from "@/content/theme";
+import { withBase } from "@/lib/utils";
 import { projects } from "@/content/projects";
 import { publicationCount, publications } from "@/content/publications";
 import { PublicationItem } from "@/components/PublicationItem";
@@ -175,9 +177,16 @@ export default function HomePage() {
               <span className="grid h-9 w-9 place-items-center rounded-full bg-sage-100 text-forest-700">
                 <GraduationCap size={18} aria-hidden />
               </span>
-              <p className="mt-5 text-xs font-semibold tracking-[0.14em] text-sage-600 uppercase">{e.degree}</p>
+              <p className="mt-5 text-xs font-semibold tracking-[0.14em] text-sage-600">{e.degree}</p>
               <h3 className="mt-1.5 text-xl font-medium">{e.field}</h3>
-              <p className="mt-2 text-[0.95rem] leading-snug text-ink-muted">{e.institution}</p>
+              <div className="mt-3 flex items-center gap-3">
+                {e.logo && (
+                  <span className="relative h-11 w-11 shrink-0">
+                    <Image src={withBase(e.logo.src)} alt={e.logo.alt} fill sizes="44px" className="object-contain" />
+                  </span>
+                )}
+                <p className="text-[0.95rem] leading-snug text-ink-muted">{e.institution}</p>
+              </div>
               {e.researchArea && <p className="mt-3 text-sm leading-snug text-forest-700">{e.researchArea}</p>}
               <p className="mt-auto pt-4 text-sm text-ink-muted">
                 {e.country} · {e.end ?? <Pending label="Year" />}
