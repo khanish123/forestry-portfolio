@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BookOpen, Code, GraduationCap, Leaf, Radar, Satellite, Brain } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Code, GraduationCap, HandCoins, Leaf, Radar, Satellite, Brain } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { CallToAction } from "@/components/CallToAction";
 import { Hero } from "@/components/Hero";
@@ -8,7 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/PageHeader";
 import { Tag } from "@/components/Tag";
 import { Visual } from "@/components/Visual";
-import { education } from "@/content/education";
+import { education, homepageAwards } from "@/content/education";
 import { displayName, interestKeywords, profile, site, siteImages } from "@/content/profile";
 import { heroLayout } from "@/content/theme";
 import { projects } from "@/content/projects";
@@ -19,6 +19,7 @@ import { researchAreas } from "@/content/research";
 import { learning } from "@/content/skills";
 
 const learningIcons = { code: Code, satellite: Satellite, radar: Radar, brain: Brain };
+const awardIcons = { scholarship: GraduationCap, funding: HandCoins };
 
 export default function HomePage() {
   const highlight = projects.find((p) => p.id === "hd-model-transferability") ?? projects[0];
@@ -41,6 +42,29 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <Hero layout={heroLayout} />
+
+      {/* ───────────── Awards & research funding ───────────── */}
+      <section aria-labelledby="awards-title" className="container-page pt-16 md:pt-20">
+        <SectionHeading eyebrow="Recognition" title="Awards & Research Funding" id="awards-title" />
+        <ul className="-mt-2 grid gap-5 md:grid-cols-2 md:gap-6">
+          {homepageAwards.map((a, i) => {
+            const Icon = awardIcons[a.icon];
+            return (
+              <Reveal as="li" key={a.title} delay={i * 80} className="flex gap-5 rounded-xl border border-line bg-surface p-6 md:p-7">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-sage-100 text-forest-700">
+                  <Icon size={20} aria-hidden />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold tracking-[0.14em] text-sage-600 uppercase">{a.kind}</p>
+                  <h3 className="mt-1.5 text-xl leading-snug font-medium">{a.title}</h3>
+                  <p className="mt-1 text-sm font-medium text-forest-700">{a.organisation}</p>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{a.description}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </ul>
+      </section>
 
       {/* ───────────── Featured research ───────────── */}
       <section aria-labelledby="featured-title" className="container-page py-20 md:py-24">

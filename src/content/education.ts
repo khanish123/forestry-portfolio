@@ -89,3 +89,32 @@ export const languages: { name: string; level: string }[] = [
   { name: "Urdu", level: "Fluent" },
   { name: "Finnish", level: "Beginner" },
 ];
+
+/**
+ * Homepage "Awards & Research Funding" cards (wording supplied by Ishfaq).
+ * The About page uses the shorter `awards` list above.
+ */
+export const homepageAwards: {
+  title: string;
+  kind: "Scholarship" | "Research funding";
+  organisation: string;
+  description: string;
+  icon: "scholarship" | "funding";
+}[] = [
+  {
+    title: "Finland Scholarship",
+    kind: "Scholarship",
+    organisation: "University of Eastern Finland (UEF)",
+    description:
+      "Awarded a Finland Scholarship to support my MSc studies at the University of Eastern Finland. The scholarship included a first-year tuition fee waiver and a relocation grant.",
+    icon: "scholarship",
+  },
+  {
+    title: "Mitacs Research Internship Funding",
+    kind: "Research funding",
+    organisation: "Mitacs, Canada",
+    description:
+      "Successfully secured Mitacs funding for a research internship in Canada. However, the planned research visit could not proceed due to visa-related circumstances.",
+    icon: "funding",
+  },
+];
