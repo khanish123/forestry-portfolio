@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { ArrowRight, Award, BookOpen, GraduationCap, MapPin } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, MapPin } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { CallToAction } from "@/components/CallToAction";
 import { PageHeader, SectionHeading } from "@/components/PageHeader";
 import { DraftNote, Pending } from "@/components/Pending";
 import { Reveal } from "@/components/Reveal";
 import { Timeline } from "@/components/Timeline";
-import { academicJourney, academicJourneyIsDraft, awards, education, languages, professionalDevelopment } from "@/content/education";
+import { academicJourney, academicJourneyIsDraft, education, languages, professionalDevelopment } from "@/content/education";
 import { interestKeywords, profile } from "@/content/profile";
 import { formatPeriod } from "@/lib/utils";
 
@@ -136,7 +136,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="dev-title" className="container-page py-20 md:py-24">
+      <section aria-labelledby="dev-title" className="container-page pt-20 md:pt-24">
         <SectionHeading eyebrow="Professional development" title="Courses, workshops and conferences" id="dev-title"
           action={
             <ButtonLink href="/experience" variant="secondary">
@@ -170,28 +170,6 @@ export default function AboutPage() {
             <Pending label="Add workshops, courses, certificates or conferences in src/content/education.ts" />
           </div>
         )}
-      </section>
-
-      <section aria-labelledby="awards-title" className="border-t border-line bg-sage-50 py-20 md:py-24">
-        <div className="container-page">
-          <SectionHeading eyebrow="Recognition" title="Scholarships, awards and grants" id="awards-title" />
-          <ul className="grid gap-6 md:grid-cols-2">
-            {awards.map((a, i) => (
-              <Reveal as="li" key={a.title} delay={i * 80} className="flex gap-5 rounded-xl border border-line bg-paper p-7">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sage-100 text-forest-700">
-                  <Award size={20} aria-hidden />
-                </span>
-                <div>
-                  <h3 className="text-xl leading-snug font-medium">
-                    {a.title}
-                    {a.year && <span className="ml-2 font-sans text-sm font-normal text-ink-muted">{a.year}</span>}
-                  </h3>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-muted">{a.detail}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
       </section>
 
       <CallToAction />
